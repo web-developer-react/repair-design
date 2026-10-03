@@ -1,0 +1,429 @@
+/* Оформление демонстрационных разделов и галерей. */
+/* Стили галереи интерьерных решений и отзывов клиентов. */
+/* Медиазапросы находятся рядом с компонентами, которые они изменяют. */
+@layer components, responsive, accessibility;
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer components {
+  /* БЭМ: блок «fantasies» — отдельный компонент. */
+  .fantasies {
+    position: relative; /* Задаёт способ позиционирования. */
+    padding: 0 0 0.03125rem; /* Внутренние отступы между содержимым и границей. */
+    background: linear-gradient(to bottom, var(--color-white) 0 calc(100% - clamp(6rem, 32.25vw, 15.125rem)), var(--color-dark) 0); /* Нижняя половина мобильной фотографии пересекает тёмный фон следующей секции. */
+  }
+
+  /* БЭМ: элемент «copy» блока «fantasies». */
+  .fantasies__copy h2 {
+    color: var(--color-accent); /* Задаёт цвет текста. */
+    font-size: 1.375rem; /* Задаёт размер текста. */
+    line-height: 1.386; /* Задаёт высоту строки. */
+    text-align: center; /* Выравнивает текст. */
+  }
+
+  /* БЭМ: элемент «styles» блока «fantasies». */
+  .fantasies__styles,
+  .fantasies__gallery,
+  .fantasies__shade {
+    display: none; /* Задаёт способ отображения. */
+  }
+
+  /* БЭМ: блок «mobile-gallery» — отдельный компонент. */
+  .mobile-gallery {
+    position: relative; /* Задаёт способ позиционирования. */
+    margin-top: 1.8375rem; /* Внешний отступ сверху. */
+    overflow: hidden; /* Управляет лишним содержимым. */
+  }
+
+  /* БЭМ: элемент «image» блока «mobile-gallery». */
+  .mobile-gallery__image {
+    width: 100%; /* Задаёт ширину. */
+    aspect-ratio: 340 / 242; /* Сохраняет пропорции элемента. */
+    object-fit: cover; /* Задаёт заполнение области изображением. */
+  }
+
+  /* БЭМ: элемент «control» блока «mobile-gallery». */
+  .mobile-gallery__control {
+    position: absolute; /* Задаёт способ позиционирования. */
+    top: 50%; /* Задаёт положение сверху. */
+    display: grid; /* Задаёт способ отображения. */
+    width: 2.25rem; /* Задаёт ширину. */
+    height: 2.25rem; /* Задаёт высоту. */
+    transform: translateY(-50%); /* Перемещает или масштабирует элемент. */
+    place-items: center; /* Выравнивает элементы Grid. */
+    border-radius: 50%; /* Скругляет углы. */
+    padding: 0; /* Нативная кнопка не добавляет отступы к исходному изображению стрелки. */
+    border: 0; /* Круг уже находится внутри предоставленного SVG. */
+    background: transparent; /* Не рисует второй круг поверх иконки. */
+    cursor: pointer; /* Показывает, что стрелка переключает фотографию. */
+  }
+
+  /* БЭМ: элемент «control» блока «mobile-gallery». */
+  .mobile-gallery__control img {
+    position: absolute; /* Задаёт способ позиционирования. */
+    top: 50%; /* Задаёт положение сверху. */
+    left: 50%; /* Задаёт положение слева. */
+    width: 4.125rem; /* Задаёт ширину. */
+    max-width: none; /* Задаёт максимальную ширину. */
+    height: 4.125rem; /* Задаёт высоту. */
+    transform: translate(-50%, -50%); /* Перемещает или масштабирует элемент. */
+  }
+
+  /* БЭМ: элемент «control» блока «mobile-gallery». */
+  .mobile-gallery__control--previous {
+    left: 0.7rem; /* Задаёт положение слева. */
+  }
+
+  .mobile-gallery__control--previous img {
+    transform: translate(-50%, -50%) rotate(180deg); /* Исходный вектор направлен вправо; поворот повторяет левую стрелку Figma. */
+  }
+
+  /* БЭМ: элемент «control» блока «mobile-gallery». */
+  .mobile-gallery__control--next {
+    right: 0.7rem; /* Задаёт положение справа. */
+  }
+
+  /* БЭМ: блок «clients» — отдельный компонент. */
+  .clients {
+    display: none; /* Задаёт способ отображения. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer accessibility {
+  /* Сохраняет читаемость отзывов и галереи при повышенном контрасте. */
+  @media (prefers-contrast: more) {
+    .review-card > p {
+      color: currentColor; /* Задаёт цвет текста. */
+    }
+  }
+
+  /* Применяет вложенные правила только при выполнении условия медиазапроса. */
+  @media (forced-colors: active) {
+    .fantasies__shade {
+      display: none; /* Задаёт способ отображения. */
+    }
+
+    .review-card__meta {
+      border: 1px solid ButtonText; /* Задаёт границу. */
+      forced-color-adjust: auto; /* Настраивает системные контрастные цвета. */
+    }
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer responsive {
+  /* Адаптивные или системные правила: @media (min-width: 48rem). */
+  @media (min-width: 48rem) {
+    /* БЭМ: блок «mobile-gallery» — отдельный компонент. */
+    .mobile-gallery {
+      width: min(100%, 42.5rem); /* Задаёт ширину. */
+      margin-inline: auto; /* Задаёт боковые внешние отступы. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 64rem). */
+  @media (min-width: 64rem) {
+    /* БЭМ: блок «fantasies» — отдельный компонент. */
+    .fantasies {
+      min-height: 54rem; /* Задаёт минимальную высоту. */
+      padding: 0; /* Задаёт внутренний отступ. */
+      background: var(--color-dark); /* Задаёт фон. */
+      color: var(--color-white); /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: вложенное правило блока «fantasies». */
+    .fantasies::before {
+      position: absolute; /* Задаёт способ позиционирования. */
+      z-index: 0; /* Задаёт порядок слоёв. */
+      inset: 0; /* Задаёт положение по сторонам. */
+      background: url("../../assets/images/fantasy-background.png") center / cover no-repeat; /* Использует исходный PNG; cover заполняет блок с сохранением пропорций изображения. */
+      content: ""; /* Добавляет декоративное содержимое. */
+    }
+
+    /* БЭМ: элемент «shade» блока «fantasies». */
+    .fantasies__shade {
+      position: absolute; /* Задаёт способ позиционирования. */
+      z-index: 1; /* Задаёт порядок слоёв. */
+      display: block; /* Задаёт способ отображения. */
+      inset: 0; /* Задаёт положение по сторонам. */
+      background: linear-gradient(121deg, rgb(0 0 0 / 75%), rgb(0 0 0 / 90%)); /* Задаёт фон. */
+    }
+
+    /* БЭМ: элемент «inner» блока «fantasies». */
+    .fantasies__inner {
+      position: relative; /* Задаёт способ позиционирования. */
+      z-index: 2; /* Задаёт порядок слоёв. */
+      min-height: 54rem; /* Задаёт минимальную высоту. */
+    }
+
+    /* БЭМ: элемент «copy» блока «fantasies». */
+    .fantasies__copy {
+      width: min(100%, 25.7rem); /* Задаёт ширину. */
+      padding-top: 8.6rem; /* Задаёт внутренний отступ сверху. */
+      transform: translateX(-0.125rem); /* Перемещение, поворот или изменение масштаба без перестройки обычного потока. */
+    }
+
+    /* БЭМ: элемент «copy» блока «fantasies». */
+    .fantasies__copy h2 {
+      font-size: 1.6875rem; /* Задаёт размер текста. */
+      line-height: 1.386; /* Строки заголовка имеют подтверждённый шаг около 37 px. */
+      transform: translateY(-0.28125rem); /* Совмещает видимые буквы с верхней границей текстового слоя Figma. */
+      text-align: left; /* Выравнивает текст. */
+    }
+
+    /* БЭМ: элемент «styles» блока «fantasies». */
+    .fantasies__styles {
+      display: grid; /* Задаёт способ отображения. */
+      gap: 1.3125rem; /* Интервал 21 px даёт шаг 49 px между названиями стилей. */
+      margin-top: 2.4375rem; /* Сохраняет начало списка около y=4691 после уточнения высоты заголовка. */
+      font-size: 1.25rem; /* Задаёт размер текста. */
+      line-height: 1.4; /* Задаёт высоту строки. */
+      list-style: none; /* Задаёт оформление списка. */
+    }
+
+    /* БЭМ: элемент «style» блока «fantasies». */
+    .fantasies__style--active {
+      width: fit-content; /* Задаёт ширину. */
+      border-bottom: 1px solid var(--color-accent); /* Задаёт границу снизу. */
+      color: var(--color-accent); /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: элемент «gallery» блока «fantasies». */
+    .fantasies__gallery {
+      position: absolute; /* Задаёт способ позиционирования. */
+      top: 0; /* Задаёт положение сверху. */
+      left: 30.3rem; /* Задаёт положение слева. */
+      display: block; /* Задаёт способ отображения. */
+      width: 46.95rem; /* Задаёт ширину. */
+      height: 56.6rem; /* Задаёт высоту. */
+      transform-origin: top left; /* Задаёт точку трансформации. */
+    }
+
+    /* БЭМ: элемент «image» блока «fantasies». */
+    .fantasies__image {
+      position: absolute; /* Задаёт способ позиционирования. */
+      width: 22.125rem; /* Задаёт ширину. */
+      object-fit: cover; /* Задаёт заполнение области изображением. */
+    }
+
+    /* БЭМ: элемент «image» блока «fantasies». */
+    .fantasies__image--center-top {
+      top: -2.5rem; /* Задаёт положение сверху. */
+      left: 0; /* Задаёт положение слева. */
+      height: 34.8125rem; /* Задаёт высоту. */
+    }
+
+    /* БЭМ: элемент «image» блока «fantasies». */
+    .fantasies__image--center-bottom {
+      top: 34.75rem; /* Задаёт положение сверху. */
+      left: 0; /* Задаёт положение слева. */
+      height: 21.8125rem; /* Задаёт высоту. */
+    }
+
+    /* БЭМ: элемент «image» блока «fantasies». */
+    .fantasies__image--right-top {
+      top: -7rem; /* Задаёт положение сверху. */
+      right: 0; /* Задаёт положение справа. */
+      height: 17.1875rem; /* Задаёт высоту. */
+    }
+
+    /* БЭМ: элемент «image» блока «fantasies». */
+    .fantasies__image--right-bottom {
+      top: 12.45rem; /* Задаёт положение сверху. */
+      right: 0; /* Задаёт положение справа. */
+      height: 39.0625rem; /* Задаёт высоту. */
+    }
+
+    /* БЭМ: блок «mobile-gallery» — отдельный компонент. */
+    .mobile-gallery {
+      display: none; /* Задаёт способ отображения. */
+    }
+
+    /* БЭМ: блок «clients» — отдельный компонент. */
+    .clients {
+      position: relative; /* Привязывает декоративный городской фон к секции отзывов. */
+      isolation: isolate; /* Держит силуэт под карточками и текстом. */
+      overflow: clip; /* Обрезает широкие декоративные силуэты по странице, предотвращая горизонтальную прокрутку. */
+      display: block; /* Задаёт способ отображения. */
+      padding: 6.9375rem 0 22.0875rem; /* Внутренние отступы между содержимым и границей. */
+      background: var(--color-white); /* Белый фон остаётся видимым за лёгким силуэтом города. */
+    }
+
+    /* Оригинальный вектор Figma повторён в двух направлениях; его прозрачность задана на самой композиции. */
+    .clients::before,
+    .clients::after {
+      position: absolute; /* Размещает силуэт независимо от высоты карточек. */
+      z-index: -1; /* Оставляет отзывы и форму поверх декоративного слоя. */
+      bottom: -4.66rem; /* Силуэт начинается около y=5981 и продолжается под тёмную секцию. */
+      width: 70.4375rem; /* 1127 px — исходная ширина полученного SVG. */
+      height: 31.5897rem; /* 505,435 px — исходная высота силуэта. */
+      background: url("../../assets/images/city-skyline.svg") center / contain no-repeat; /* Использует точный экспорт векторного слоя Figma. */
+      opacity: 0.05; /* Повторяет прозрачность 5% у исходных фреймов. */
+      content: ""; /* Создаёт только декоративный слой, без текста. */
+      pointer-events: none; /* Не перекрывает клики и выделение текста. */
+    }
+
+    .clients::before {
+      right: calc(50% - 0.5625rem); /* Учитывает перекрытие двух исходных слоёв на 18 px. */
+      transform: scaleX(-1); /* Повторяет зеркальное направление левого слоя макета. */
+    }
+
+    .clients::after {
+      left: calc(50% - 0.5625rem); /* Правый слой начинается на x=711 в кадре шириной 1440 px. */
+    }
+
+    /* БЭМ: элемент «intro» блока «clients». */
+    .clients__intro {
+      margin-top: 1.5rem; /* Задаёт внешний отступ сверху. */
+      font-size: 1.125rem; /* Задаёт размер текста. */
+      line-height: 1.2; /* Задаёт высоту строки. */
+      text-align: center; /* Выравнивает текст. */
+    }
+
+    /* БЭМ: элемент «grid» блока «clients». */
+    .clients__grid {
+      display: grid; /* Задаёт способ отображения. */
+      grid-template-columns: repeat(3, minmax(0, 1fr)); /* Задаёт колонки Grid. */
+      gap: clamp(1.5rem, 3vw, 3.4rem); /* Задаёт расстояние между элементами. */
+      margin-top: 3.425rem; /* Задаёт внешний отступ сверху. */
+    }
+
+    /* БЭМ: блок «review-card» — отдельный компонент. */
+    .review-card {
+      position: relative; /* Задаёт способ позиционирования. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      min-height: 28.5rem; /* Задаёт минимальную высоту. */
+      padding: 1.5rem 1.25rem 4.5rem; /* Задаёт внутренний отступ. */
+      background: var(--color-white); /* Задаёт фон. */
+      box-shadow: var(--shadow-card); /* Добавляет тень. */
+    }
+
+    /* БЭМ: элемент «header» блока «review-card». */
+    .review-card__header {
+      display: flex; /* Задаёт способ отображения. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      align-items: center; /* Выравнивает элементы поперёк. */
+      gap: 1.4rem; /* Задаёт расстояние между элементами. */
+    }
+
+    /* БЭМ: элемент «header» блока «review-card». */
+    .review-card__header > img {
+      width: 4.75rem; /* Задаёт ширину. */
+      height: 4.75rem; /* Задаёт высоту. */
+      flex: 0 0 4.75rem; /* Настраивает размер элемента во Flexbox. */
+      border-radius: 50%; /* Скругляет углы. */
+      object-fit: cover; /* Задаёт заполнение области изображением. */
+    }
+
+    /* БЭМ: элемент «header» блока «review-card». */
+    .review-card__header h3 {
+      min-width: 0; /* Задаёт минимальную ширину. */
+      font-size: 1.125rem; /* Задаёт размер текста. */
+      line-height: 1.1; /* Задаёт высоту строки. */
+    }
+
+    /* БЭМ: вложенное правило блока «review-card». */
+    .review-card > p {
+      margin-top: 1.15rem; /* Задаёт внешний отступ сверху. */
+      color: var(--color-muted); /* Задаёт цвет текста. */
+      font-size: 0.8125rem; /* Задаёт размер текста. */
+      line-height: 1.8; /* Задаёт высоту строки. */
+    }
+
+    /* БЭМ: элемент «meta» блока «review-card». */
+    .review-card__meta {
+      position: absolute; /* Задаёт способ позиционирования. */
+      right: 0; /* Задаёт положение справа. */
+      bottom: -1.7rem; /* Задаёт положение снизу. */
+      left: 0; /* Задаёт положение слева. */
+      display: grid; /* Задаёт способ отображения. */
+      grid-template-columns: 1fr 1.3fr; /* Задаёт колонки Grid. */
+      width: min(100%, 18.35rem); /* Задаёт ширину. */
+      min-height: 3.375rem; /* Задаёт минимальную высоту. */
+      background: var(--color-accent); /* Задаёт фон. */
+      box-shadow: 0.3125rem 0.3125rem 1.25rem rgb(227 184 115 / 50%); /* Добавляет тень. */
+      color: var(--color-white); /* Задаёт цвет текста. */
+      font-family: var(--font-display); /* Задаёт семейство шрифта. */
+      font-size: 1.0625rem; /* Задаёт размер текста. */
+      text-transform: uppercase; /* Меняет регистр текста. */
+    }
+
+    /* БЭМ: элемент «meta» блока «review-card». */
+    .review-card__meta span {
+      display: flex; /* Задаёт способ отображения. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      align-items: center; /* Выравнивает элементы поперёк. */
+      gap: 0.65rem; /* Задаёт расстояние между элементами. */
+      padding: 0.65rem 0.85rem; /* Задаёт внутренний отступ. */
+    }
+
+    /* БЭМ: элемент «meta» блока «review-card». */
+    .review-card__meta span + span {
+      border-left: 1px solid var(--color-white); /* Задаёт границу слева. */
+    }
+
+    /* БЭМ: элемент «meta» блока «review-card». */
+    .review-card__meta img {
+      width: 2rem; /* Задаёт ширину. */
+      height: 2rem; /* Задаёт высоту. */
+      flex: 0 0 2rem; /* Настраивает размер элемента во Flexbox. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 64rem) and (max-width: 79.99rem). */
+  @media (min-width: 64rem) and (max-width: 79.99rem) {
+    /* БЭМ: блок «fantasies» — отдельный компонент. */
+    .fantasies {
+      min-height: 0; /* Задаёт минимальную высоту. */
+      padding: 3.5rem 0; /* Задаёт внутренний отступ. */
+      background: var(--color-white); /* Задаёт фон. */
+      color: var(--color-text); /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: вложенное правило блока «fantasies». */
+    .fantasies::before,
+    .fantasies__shade,
+    .fantasies__styles,
+    .fantasies__gallery {
+      display: none; /* Задаёт способ отображения. */
+    }
+
+    /* БЭМ: элемент «inner» блока «fantasies». */
+    .fantasies__inner {
+      min-height: 0; /* Задаёт минимальную высоту. */
+    }
+
+    /* БЭМ: элемент «copy» блока «fantasies». */
+    .fantasies__copy {
+      width: auto; /* Задаёт ширину. */
+      padding-top: 0; /* Задаёт внутренний отступ сверху. */
+    }
+
+    /* БЭМ: элемент «copy» блока «fantasies». */
+    .fantasies__copy h2 {
+      font-size: 1.6875rem; /* Задаёт размер текста. */
+      text-align: center; /* Выравнивает текст. */
+    }
+
+    /* БЭМ: блок «mobile-gallery» — отдельный компонент. */
+    .mobile-gallery {
+      display: block; /* Задаёт способ отображения. */
+      width: min(100%, 42.5rem); /* Задаёт ширину. */
+      margin-inline: auto; /* Задаёт боковые внешние отступы. */
+    }
+
+    /* БЭМ: элемент «meta» блока «review-card». */
+    .review-card__meta {
+      width: 100%; /* Задаёт ширину. */
+      font-size: 0.875rem; /* Задаёт размер текста. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 80rem) and (max-width: 89.99rem). */
+  @media (min-width: 80rem) and (max-width: 89.99rem) {
+    /* БЭМ: элемент «gallery» блока «fantasies». */
+    .fantasies__gallery {
+      transform: scale(0.94); /* Перемещает или масштабирует элемент. */
+    }
+  }
+}

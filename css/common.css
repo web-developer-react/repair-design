@@ -1,0 +1,225 @@
+/* Общие стили проекта, используемые разными блоками страницы. */
+/* Общая основа сайта: сброс, дизайн-токены, базовая типографика и доступность. */
+/* Изменения здесь влияют на все секции страницы. */
+@layer reset, tokens, base, layout, components, responsive, accessibility;
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer reset {
+  /* Общее правило для селектора «*, *::before, *::after». */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box; /* Настраивает свойство «box-sizing». */
+  }
+
+  /* Общее правило для селектора «html». */
+  html {
+    scroll-behavior: smooth; /* Настраивает плавную прокрутку. */
+    -webkit-text-size-adjust: 100%; /* Сохраняет размер текста в Safari. */
+    text-size-adjust: 100%; /* Сохраняет предсказуемый размер текста. */
+  }
+
+  /* Общее правило для селектора «body, h1, h2, h3, p, ul, ol, dl, dd, figure». */
+  body,
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  ol,
+  dl,
+  dd,
+  figure {
+    margin: 0; /* Задаёт внешний отступ. */
+  }
+
+  /* Общее правило для селектора «ul, ol». */
+  ul,
+  ol {
+    padding: 0; /* Задаёт внутренний отступ. */
+  }
+
+  /* Общее правило для селектора «img, picture». */
+  img,
+  picture {
+    display: block; /* Задаёт способ отображения. */
+  }
+
+  /* Общее правило для селектора «img». */
+  img {
+    max-width: 100%; /* Задаёт максимальную ширину. */
+    height: auto; /* Задаёт высоту. */
+  }
+
+  /* Общее правило для селектора «button, input». */
+  button,
+  input {
+    font: inherit; /* Наследует настройки шрифта. */
+  }
+
+  /* Общее правило для селектора «button, a». */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent; /* Настраивает свойство «-webkit-tap-highlight-color». */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer tokens {
+  /* Общее правило для селектора «:root». */
+  :root {
+    --color-accent: #e3b873; /* Объявляет общий дизайн-токен. */
+    --color-dark: #181818; /* Объявляет общий дизайн-токен. */
+    --color-dark-deep: #131313; /* Объявляет общий дизайн-токен. */
+    --color-text: #363636; /* Объявляет общий дизайн-токен. */
+    --color-muted: #959595; /* Объявляет общий дизайн-токен. */
+    --color-white: #fff; /* Объявляет общий дизайн-токен. */
+    --font-body: "Nunito Sans", Arial, sans-serif; /* Объявляет общий дизайн-токен. */
+    --font-display: "Yeseva One", Georgia, serif; /* Объявляет общий дизайн-токен. */
+    --container: 77.25rem; /* Объявляет общий дизайн-токен. */
+    --page-padding: 1.125rem; /* Объявляет общий дизайн-токен. */
+    --focus-ring: 0 0 0 0.2rem #fff, 0 0 0 0.4rem #9b6818; /* Объявляет общий дизайн-токен. */
+    --shadow-accent: 0 0.3125rem 0.9375rem rgb(227 184 115 / 30%); /* Объявляет общий дизайн-токен. */
+    --shadow-card: 0 0.625rem 3.125rem rgb(0 0 0 / 4%); /* Объявляет общий дизайн-токен. */
+    --transition-fast: 180ms ease; /* Объявляет общий дизайн-токен. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer base {
+  /* Общее правило для селектора «body». */
+  body {
+    min-width: 20rem; /* Задаёт минимальную ширину. */
+    background: var(--color-white); /* Задаёт фон. */
+    color: var(--color-text); /* Задаёт цвет текста. */
+    font-family: var(--font-body); /* Задаёт семейство шрифта. */
+    font-stretch: 100%; /* Сохраняет ширину Nunito Sans из Figma. */
+    font-synthesis: none; /* Запрещает искусственные начертания. */
+    font-variation-settings: normal; /* Параметры Figma уже сохранены внутри локальных начертаний Nunito Sans. */
+    font-size: 0.875rem; /* Задаёт размер текста. */
+    line-height: 1.5; /* Задаёт высоту строки. */
+    overflow-wrap: anywhere; /* Разрешает перенос длинных слов. */
+    text-rendering: optimizeLegibility; /* Улучшает отрисовку текста. */
+    -webkit-font-smoothing: antialiased; /* На macOS сглаживает буквы без лишнего утолщения, приближая текст к экспорту Figma. */
+  }
+
+  /* Общее правило для селектора «main». */
+  main {
+    min-width: 0; /* Задаёт минимальную ширину. */
+  }
+
+  /* Общее правило для селектора «a». */
+  a {
+    color: inherit; /* Задаёт цвет текста. */
+  }
+
+  /* Общее правило для селектора «button». */
+  button {
+    color: inherit; /* Задаёт цвет текста. */
+  }
+
+  /* Общее правило для селектора «h1, h2, h3». */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display); /* Задаёт семейство шрифта. */
+    font-weight: 400; /* Задаёт толщину текста. */
+  }
+
+  /* Общее правило для селектора «h2». */
+  h2 {
+    font-size: 1.25rem; /* Задаёт размер текста. */
+    line-height: 1.2; /* Задаёт высоту строки. */
+    text-transform: uppercase; /* Меняет регистр текста. */
+  }
+
+  /* Общее правило для селектора «::selection». */
+  ::selection {
+    background: var(--color-accent); /* Задаёт фон. */
+    color: var(--color-dark-deep); /* Задаёт цвет текста. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer layout {
+  /* БЭМ: блок «container» — отдельный компонент. */
+  .container {
+    width: min(calc(100% - (var(--page-padding) * 2)), var(--container)); /* Задаёт ширину. */
+    min-width: 0; /* Задаёт минимальную ширину. */
+    margin-inline: auto; /* Задаёт боковые внешние отступы. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer responsive {
+  /* Адаптивные или системные правила: @media (min-width: 48rem). */
+  @media (min-width: 48rem) {
+    /* Общее правило для селектора «:root». */
+    :root {
+      --page-padding: 2rem; /* Объявляет общий дизайн-токен. */
+    }
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer accessibility {
+  /* Общее правило для селектора «:where(a, button, input):focus-visible». */
+  :where(a, button, input):focus-visible {
+    outline: 0; /* Задаёт внешнюю рамку. */
+    box-shadow: var(--focus-ring); /* Добавляет тень. */
+  }
+
+  /* БЭМ: вложенное правило блока «field». */
+  .field input:focus-visible {
+    border-bottom-color: var(--color-accent); /* Задаёт цвет нижней границы. */
+    box-shadow: 0 0.15rem 0 var(--color-accent); /* Добавляет тень. */
+  }
+
+  /* Адаптивные или системные правила: @media (prefers-reduced-motion: reduce). */
+  @media (prefers-reduced-motion: reduce) {
+    /* Общее правило для селектора «*, *::before, *::after». */
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important; /* Настраивает плавную прокрутку. */
+      transition-duration: 0.01ms !important; /* Сокращает длительность перехода. */
+      animation-duration: 0.01ms !important; /* Сокращает длительность анимации. */
+      animation-iteration-count: 1 !important; /* Ограничивает повтор анимации. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (prefers-contrast: more). */
+  @media (prefers-contrast: more) {
+    /* Общее правило для селектора «:root». */
+    :root {
+      --color-accent: #f2c06f; /* Объявляет общий дизайн-токен. */
+      --color-muted: #707070; /* Делает мелкий серый текст на белом фоне темнее в режиме повышенного контраста. */
+    }
+
+    .button:not(.button--outline) {
+      background: #80520c; /* Белые подписи получают достаточный контраст, когда пользователь включил повышенный контраст системы. */
+      border-color: #80520c; /* Сохраняет цельный контур более тёмной кнопки. */
+    }
+
+    /* БЭМ: элемент «link» блока «site-nav». */
+    .site-nav__link,
+    .field label {
+      color: currentColor; /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: вложенное правило блока «field». */
+    .field input {
+      border-bottom-width: 2px; /* Задаёт толщину нижней границы. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (forced-colors: active). */
+  @media (forced-colors: active) {
+    /* БЭМ: вложенное правило блока «button». */
+    .button,
+    .consent__box {
+      border: 1px solid ButtonText; /* Задаёт границу. */
+      forced-color-adjust: auto; /* Настраивает системные контрастные цвета. */
+    }
+  }
+}

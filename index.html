@@ -1,0 +1,955 @@
+<!doctype html>
+<!-- Страница «IC Repair Design Project»: разметка содержимого и подключение нужных ресурсов. -->
+
+<!-- lang: Указывает язык содержимого для произношения и правил обработки текста. -->
+<html lang="en">
+  <!-- Настройки документа: кодировка, заголовок, метаданные и подключения ресурсов. -->
+  <head>
+    <!-- Основные данные страницы для браузера, поисковых систем и адаптивной вёрстки. -->
+    <meta charset="UTF-8" /> <!-- charset: Указывает кодировку документа. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Задаёт служебные сведения для браузера и поисковых систем. name: Задаёт имя передаваемого поля; одинаковое имя объединяет радиокнопки. content: Содержит значение метаданных, назначение которых задаёт name или http-equiv. -->
+    <meta name="description" content="Turnkey apartment repair services and completed interior projects in Rostov-on-Don." /> <!-- Задаёт служебные сведения для браузера и поисковых систем. -->
+    <meta name="theme-color" content="#131313" /> <!-- Задаёт служебные сведения для браузера и поисковых систем. -->
+    <meta property="og:title" content="IC Repair Design Project" /> <!-- property: Задаёт имя свойства метаданных, например Open Graph. -->
+    <meta
+      property="og:description"
+      content="Turnkey repairs, completed projects, repair options, and project consultations."
+    />
+    <meta property="og:type" content="website" />
+    <!-- Задаёт название вкладки браузера. -->
+    <title>IC Repair Design Project</title>
+
+    <!-- Иконка вкладки и стили подключены от общих к секционным. -->
+    <link rel="icon" href="assets/icons/repair-tools.svg" type="image/svg+xml" /> <!-- rel: Объясняет отношение ссылки к текущему документу. href: Указывает адрес перехода или подключаемого ресурса. type: Выбирает разновидность поля, кнопки или подключаемого содержимого. -->
+    <link rel="stylesheet" href="css/fonts.css" /> <!-- Подключает таблицу стилей по пути из href; относительный путь отсчитывается от HTML-файла. -->
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/sections/projects.css" />
+    <link rel="stylesheet" href="css/sections/services.css" />
+    <link rel="stylesheet" href="css/sections/showcase.css" />
+    <link rel="stylesheet" href="css/sections/contacts.css" />
+    <!-- defer запускает небольшие сценарии после чтения HTML; страница не зависит от сторонних библиотек. -->
+    <script src="js/site-controls.js" defer></script>
+  </head>
+  <!-- Содержит отображаемую страницу и её элементы управления. -->
+  <body>
+    <!-- Доступность: быстрый переход к основному содержимому с клавиатуры. -->
+    <!-- class: Связывает элемент с CSS-селекторами и поиском в JavaScript. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- БЭМ: блок site-header — шапка и основная навигация сайта. -->
+    <!-- data-node-id: Хранит пользовательское значение для CSS или JavaScript; имя после data- связывает разметку со сценарием. -->
+    <header class="site-header" data-node-id="1:11205">
+      <!-- Группирует элементы для оформления и работы сценария, не добавляя отдельного смыслового значения. -->
+      <div class="site-header__inner container">
+        <!-- БЭМ: элемент site-header__brand — название проекта. -->
+        <a class="site-header__brand" href="#home"
+          >IC "Repair Design Project"</a
+        >
+
+        <!-- БЭМ: блок site-nav — навигация по секциям страницы. -->
+        <!-- aria-label: Даёт элементу доступное имя. -->
+        <nav class="site-nav" aria-label="Primary navigation">
+          <!-- Якорная ссылка переводит к элементу с соответствующим id на этой странице. -->
+          <a class="site-nav__link site-nav__link--active" href="#home">Home</a>
+          <a class="site-nav__link" href="#projects">Projects</a>
+          <a class="site-nav__link" href="#measurement">Measurement</a>
+          <a class="site-nav__link" href="#repair-types">Team</a>
+          <a class="site-nav__link" href="#clients">Reviews</a>
+          <a class="site-nav__link" href="#contacts">Contacts</a>
+        </nav>
+
+        <a class="site-header__phone" href="tel:+79287683239"
+          >+7 (928) 768-32-39</a
+        >
+        <a
+          class="button button--small site-header__request"
+          href="#contact-form"
+          >Request a call</a
+        >
+      </div>
+    </header>
+
+    <!-- Основное содержимое одностраничного сайта. -->
+    <!-- id: Даёт элементу идентификатор для якоря, подписи, CSS или JavaScript. -->
+    <main id="main-content" tabindex="-1">
+      <!-- БЭМ: блок hero — первый экран с основным предложением. -->
+      <section class="hero" id="home" data-node-id="1:11194">
+        <!-- Обёртка picture задаёт положение фонового изображения; img загружает исходный PNG. -->
+        <picture class="hero__media">
+          <!-- Подключает изображение; его текстовую замену задаёт alt. src: Указывает адрес загружаемого ресурса. alt: Даёт текстовую замену картинки; пустая строка обозначает декоративное изображение. width: Задаёт ширину в правилах этого элемента; у изображения помогает заранее определить место. height: Задаёт высоту в правилах этого элемента; у изображения помогает заранее определить место. -->
+          <img
+            src="assets/images/hero-desktop.png"
+            alt="Modern apartment interior with a dining table and lounge area"
+            width="2126"
+            height="1417"
+          />
+        </picture>
+        <!-- aria-hidden: Убирает элемент из дерева доступности при true; само по себе не скрывает его зрительно. -->
+        <div class="hero__shade" aria-hidden="true"></div>
+
+        <!-- БЭМ: элемент hero__inner ограничивает ширину текста первого экрана. -->
+        <div class="hero__inner container">
+          <div class="hero__content">
+            <!-- Задаёт заголовок первого уровня. -->
+            <h1 class="hero__title">
+              Turnkey Repair in the<!-- Принудительно переносит строку. --><br />city of <!-- Выделяет часть строки для оформления или обращения из JavaScript. --><span>Rostov-on-Don</span>
+            </h1>
+            <!-- Обозначает отдельный абзац. -->
+            <p class="hero__lead">
+              <span class="label-desktop">
+                Get ready-made turnkey repairs on time<br />
+                with work time saving up to 45 days and 20% from<br />
+                cost of materials due to the organization of work
+              </span>
+              <span class="label-mobile">
+                Get ready-made turnkey repairs on time<br />
+                with work time saving up to 45 days and<br />
+                20% from cost of materials due to the organization of<br />
+                work
+              </span>
+            </p>
+            <div class="hero__actions">
+              <a class="button" href="#repair-types">Calculate the cost</a>
+              <a class="button button--outline" href="#contact-form">
+                <span class="label-desktop">Submit your application</span>
+                <span class="label-mobile">Application</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЭМ: блок projects — выполненный проект и его характеристики. -->
+      <section class="projects" id="projects" data-node-id="10642:6">
+        <div class="projects__inner container">
+          <div class="projects__copy">
+            <!-- Задаёт заголовок раздела второго уровня. -->
+            <h2 class="projects__title">Completed projects</h2>
+            <p class="projects__intro">
+              Only a small part of the work performed by our company is
+              presented on the site. For 14 years on in the construction<br class="label-desktop" />
+              market we have made happy more than 1000 families
+            </p>
+
+            <!-- Объединяет термины и их описания. -->
+            <dl class="project-facts">
+              <div class="project-facts__item">
+                <!-- Задаёт термин в списке определений. -->
+                <dt>City:</dt>
+                <!-- Объясняет предыдущий термин. -->
+                <dd>Rostov-on-Don<br />LCD admiral</dd>
+              </div>
+              <div class="project-facts__item">
+                <dt>Apartment area:</dt>
+                <dd>81 m²</dd>
+              </div>
+              <div class="project-facts__item">
+                <dt>Repair time:</dt>
+                <dd>3.5 months</dd>
+              </div>
+              <div class="project-facts__item">
+                <dt>Repair cost:</dt>
+                <dd>Upon request</dd>
+              </div>
+            </dl>
+
+            <!-- Декоративные элементы управления повторяют статичный кадр Figma. -->
+            <div class="project-controls" aria-hidden="true">
+              <span class="icon-button icon-button--previous">
+                <picture>
+                  <source
+                    media="(max-width: 63.99rem)"
+                    srcset="assets/icons/project-left-mobile.svg"
+                  />
+                  <!-- Декоративное изображение: пустой alt исключает его из озвучивания экранным диктором. -->
+                  <img
+                    src="assets/icons/arrow-left.svg"
+                    alt=""
+                    width="42"
+                    height="14"
+                  />
+                </picture>
+              </span>
+              <!-- Готовый SVG сохраняет размер и расстояния между тремя точками из макета. -->
+              <img class="project-controls__dots" src="assets/icons/three-dots.svg" alt="" width="64" height="10" />
+              <span class="icon-button">
+                <picture>
+                  <source
+                    media="(max-width: 63.99rem)"
+                    srcset="assets/icons/project-right-mobile.svg"
+                  />
+                  <img
+                    src="assets/icons/arrow-right.svg"
+                    alt=""
+                    width="42"
+                    height="14"
+                  />
+                </picture>
+              </span>
+            </div>
+          </div>
+
+          <div class="projects__visual">
+            <div class="project-tabs" aria-label="Project locations">
+              <span class="project-tabs__item project-tabs__item--active"
+                >Rostov-on-Don, Admiral</span
+              >
+              <span class="project-tabs__item">Sochi Thieves</span>
+              <span class="project-tabs__item">Rostov-on-Don Patriotic</span>
+            </div>
+            <picture>
+              <source
+                    media="(max-width: 47.99rem)"
+                    srcset="assets/images/project-mobile.png"
+                  />
+              <img
+                    class="projects__image"
+                    src="assets/images/project-desktop-overlay.png"
+                    alt="Completed apartment interior with two black armchairs by a large window"
+                    width="1920"
+                    height="1440"
+                  />
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЭМ: блок online — визуальный контроль ремонта и форма заявки. -->
+      <!-- aria-labelledby: Берёт доступное имя из элементов с указанными id. -->
+      <section
+        class="online"
+        aria-labelledby="online-title"
+        data-node-id="1:11187"
+      >
+        <div class="online__inner container">
+          <!-- Общий заголовок секции с оригинальной иконкой Figma. -->
+          <div class="section-heading section-heading--light">
+            <h2 id="online-title">Online control</h2>
+            <span class="section-heading__decoration" aria-hidden="true">
+              <span></span>
+              <img
+                src="assets/icons/camera.svg"
+                alt=""
+                width="33"
+                height="28"
+              />
+              <span></span>
+            </span>
+          </div>
+
+          <!-- БЭМ: элемент online__video — статичный постер видеонаблюдения. -->
+          <div class="online__video">
+            <picture>
+              <img
+                    src="assets/images/online-control-desktop.png"
+                    alt="A repair specialist painting the ceiling in an apartment"
+                    width="1920"
+                    height="1280"
+                  />
+            </picture>
+            <div class="online__video-shade" aria-hidden="true"></div>
+            <span class="online__play" aria-hidden="true">
+              <picture>
+                <source
+                  media="(max-width: 63.99rem)"
+                  srcset="assets/icons/play-mobile.svg"
+                />
+                <img
+                  src="assets/icons/play.svg"
+                  alt=""
+                  width="145"
+                  height="145"
+                />
+              </picture>
+            </span>
+          </div>
+
+          <div class="online__divider" aria-hidden="true"></div>
+          <p class="online__description">
+            At each facility, a camera is installed that broadcasts the progress
+            of work on the clock. At any time, you can go to our website and
+            monitor the progress of work in your apartment. You can watch the
+            live broadcast from one of our facilities!<br />
+            Leave a request below and you will receive a link to the broadcast.
+          </p>
+
+          <!-- БЭМ: блок lead-form — короткая заявка с нативной HTML-валидацией. -->
+          <form class="lead-form lead-form--inline" method="post">
+            <div class="field">
+              <!-- Подпись связана с полем, у которого id совпадает с for. -->
+              <!-- for: Связывает подпись label с id поля. -->
+              <label for="online-name">Name</label>
+              <!-- Создаёт поле ввода или элемент выбора в зависимости от type. type: Выбирает разновидность поля, кнопки или подключаемого содержимого. placeholder: Показывает подсказку внутри пустого поля; не заменяет подпись. autocomplete: Подсказывает назначение поля для автозаполнения. required: Требует заполнения поля перед штатной отправкой формы. -->
+              <input
+                id="online-name"
+                name="name"
+                type="text"
+                placeholder="What is your name:"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="online-phone"><span class="label-desktop">Phone</span><span class="label-mobile">Number</span></label>
+              <!-- Создаёт поле ввода или элемент выбора в зависимости от type. type: Выбирает разновидность поля, кнопки или подключаемого содержимого. -->
+              <input
+                id="online-phone"
+                name="phone"
+                type="tel"
+                placeholder="Your phone number:"
+                autocomplete="tel"
+                required
+              />
+            </div>
+            <label class="consent lead-form__consent" for="online-consent">
+              <!-- Создаёт поле ввода или элемент выбора в зависимости от type. type: Выбирает разновидность поля, кнопки или подключаемого содержимого. -->
+              <input
+                id="online-consent"
+                name="consent"
+                type="checkbox"
+                required
+              />
+              <span class="consent__box" aria-hidden="true">
+                <img
+                  src="assets/icons/check.svg"
+                  alt=""
+                  width="12"
+                  height="9"
+                />
+              </span>
+              <span>I agree to the processing of personal data</span>
+            </label>
+            <!-- Согласие находится перед отправкой и в HTML, чтобы порядок Tab совпадал с действиями пользователя. -->
+            <button class="button button--submit lead-form__submit" type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- БЭМ: блок repair-types — карточки доступных типов ремонта. -->
+      <section
+        class="repair-types"
+        id="repair-types"
+        aria-labelledby="repair-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <h2 id="repair-title">Types of repair</h2>
+            <span class="section-heading__decoration" aria-hidden="true">
+              <span></span>
+              <img
+                src="assets/icons/repair-tools.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+              <span></span>
+            </span>
+          </div>
+
+          <!-- Grid-сетка независимых БЭМ-карточек repair-card. -->
+          <div class="repair-grid">
+            <!-- Самостоятельный материал «Redecorating». -->
+            <article class="repair-card">
+              <picture>
+
+                      <!-- loading: Выбирает отложенную загрузку lazy или обычную eager. -->
+                <img
+                        class="repair-card__image"
+                        src="assets/images/repair-redecorating-desktop.png"
+                        alt="A renovated room with a blue accent wall"
+                        width="1920"
+                        height="1080"
+                        loading="lazy"
+                      />
+              </picture>
+              <div class="repair-card__body">
+                <!-- Задаёт вложенный заголовок третьего уровня. -->
+                <h3>Redecorating</h3>
+                <!-- Объединяет элементы неупорядоченного списка. -->
+                <ul>
+                  <!-- Задаёт один пункт списка. -->
+                  <li>Dismantling of old coatings</li>
+                  <li>Wallpapering</li>
+                  <li>Painting walls and ceilings</li>
+                  <li>Laying flooring</li>
+                  <li>Replacing plumbing</li>
+                  <li>Replacing sockets and switches</li>
+                  <li>Replacing doors</li>
+                </ul>
+              </div>
+              <p class="repair-card__price">From 900 rub / m²</p>
+            </article>
+
+            <!-- Самостоятельный материал «Overhaul». -->
+            <article class="repair-card">
+              <picture>
+                <img
+                        class="repair-card__image"
+                        src="assets/images/repair-overhaul-desktop.png"
+                        alt="A bright living room with a curved ceiling and orange curtains"
+                        width="2124"
+                        height="743"
+                        loading="lazy"
+                      />
+              </picture>
+              <div class="repair-card__body">
+                <h3>Overhaul</h3>
+                <ul>
+                  <li>Dismantling of old coatings</li>
+                  <li>Wallpapering</li>
+                  <li>Painting walls and ceilings</li>
+                  <li>Laying flooring</li>
+                  <li>Replacing plumbing</li>
+                  <li>Replacing sockets and switches</li>
+                  <li>Replacing doors</li>
+                </ul>
+              </div>
+              <p class="repair-card__price">From 1800 rub / m²</p>
+            </article>
+
+            <!-- Самостоятельный материал «Designer Repair». -->
+            <article class="repair-card">
+              <picture>
+                <img
+                        class="repair-card__image"
+                        src="assets/images/repair-designer-desktop.png"
+                        alt="A designer kitchen and dining interior with modern pendant lighting"
+                        width="1200"
+                        height="900"
+                        loading="lazy"
+                      />
+              </picture>
+              <div class="repair-card__body">
+                <h3>Designer Repair</h3>
+                <ul>
+                  <li>Dismantling of old coatings</li>
+                  <li>Wallpapering</li>
+                  <li>Painting walls and ceilings</li>
+                  <li>Laying flooring</li>
+                  <li>Replacing plumbing</li>
+                  <li>Replacing sockets and switches</li>
+                  <li>Replacing doors</li>
+                </ul>
+              </div>
+              <p class="repair-card__price">From 4000 rub / m²</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЭМ: блок measurement — шаги замера и форма для широких экранов. -->
+      <section
+        class="measurement"
+        id="measurement"
+        aria-labelledby="measurement-title"
+      >
+        <div class="measurement__inner container">
+          <h2 class="visually-hidden" id="measurement-title"
+            >Free measurement</h2
+          >
+
+          <!-- Объединяет пункты последовательности с нумерацией. -->
+          <ol class="measurement__steps">
+            <li>
+              <span>01</span>
+              <p
+                >Our specialist will arrive for measurements per day contact, or
+                appoint a date convenient for you</p
+              >
+            </li>
+            <li><span>02</span><p>Free metering</p></li>
+            <li><span>03</span><p>Free consultation</p></li>
+            <li
+              ><span>04</span
+              ><p
+                >Get a cost estimate and the timing of your future repairs</p
+              ></li
+            >
+          </ol>
+
+          <div class="measurement__panel">
+            <!-- Группа полей ввода; способ отправки задаётся атрибутами формы и обработчиками JavaScript. -->
+            <form class="dark-form" method="post">
+              <h3>Leave a request for free<br />departure of the measurer</h3>
+              <div class="field field--dark">
+                <label for="measure-name">Name</label>
+                <input
+                  id="measure-name"
+                  name="name"
+                  type="text"
+                  placeholder="What is your name:"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="field field--dark">
+                <label for="measure-phone">Phone</label>
+                <input
+                  id="measure-phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Your phone number:"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+              <div class="field field--dark">
+                <label for="measure-email">Email</label>
+                <!-- Создаёт поле ввода или элемент выбора в зависимости от type. type: Выбирает разновидность поля, кнопки или подключаемого содержимого. -->
+                <input
+                  id="measure-email"
+                  name="email"
+                  type="email"
+                  placeholder="Your email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <label class="consent consent--dark" for="measure-consent">
+                <input
+                  id="measure-consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                />
+                <span class="consent__box" aria-hidden="true">
+                  <img
+                    src="assets/icons/check.svg"
+                    alt=""
+                    width="12"
+                    height="9"
+                  />
+                </span>
+                <span>I agree to the processing of personal data</span>
+              </label>
+              <button class="button button--submit dark-form__submit" type="submit"
+                >Call the measurer</button
+              >
+            </form>
+
+            <div class="measurement__saving">
+              <img
+                src="assets/icons/savings.svg"
+                alt=""
+                width="112"
+                height="112"
+              />
+              <p>Help save 10 - 20% of the<br />cost of materials</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЭМ: блок fantasies — галерея интерьерных решений. -->
+      <section class="fantasies" aria-labelledby="fantasies-title">
+        <div class="fantasies__shade" aria-hidden="true"></div>
+        <div class="fantasies__inner container">
+          <div class="fantasies__copy">
+            <h2 id="fantasies-title">We realize your<br />wildest fantasies</h2>
+            <ul class="fantasies__styles" aria-label="Interior styles">
+              <li class="fantasies__style fantasies__style--active"
+                >American classic</li
+              >
+              <li class="fantasies__style">Empire</li>
+              <li class="fantasies__style">Classical</li>
+              <li class="fantasies__style">Loft</li>
+              <li class="fantasies__style">Minimalism</li>
+              <li class="fantasies__style">Provence</li>
+              <li class="fantasies__style">Romanticism</li>
+              <li class="fantasies__style">Scandinavian style</li>
+              <li class="fantasies__style">Mediterranean style</li>
+              <li class="fantasies__style">High tech</li>
+              <li class="fantasies__style">Eclecticism</li>
+            </ul>
+          </div>
+
+          <div class="fantasies__gallery" role="group" aria-label="Interior gallery">
+            <picture>
+              <!-- Подключает исходный PNG без дополнительного сжатия с потерей деталей. -->
+              <img
+                class="fantasies__image fantasies__image--center-top"
+                src="assets/images/fantasy-background.png"
+                alt="Classic interior with a tall wooden clock"
+                width="1760"
+                height="1166"
+                loading="lazy"
+              />
+            </picture>
+            <picture>
+              <!-- Подключает исходный PNG без дополнительного сжатия с потерей деталей. -->
+              <img
+                class="fantasies__image fantasies__image--center-bottom"
+                src="assets/images/fantasy-center-lounge.png"
+                alt="Classic living room with light upholstery"
+                width="2500"
+                height="1630"
+                loading="lazy"
+              />
+            </picture>
+            <picture>
+              <!-- Подключает исходный PNG без дополнительного сжатия с потерей деталей. -->
+              <img
+                class="fantasies__image fantasies__image--right-top"
+                src="assets/images/fantasy-right-top.png"
+                alt="Elegant living and dining room"
+                width="1920"
+                height="1298"
+                loading="lazy"
+              />
+            </picture>
+            <picture>
+              <!-- Подключает исходный PNG без дополнительного сжатия с потерей деталей. -->
+              <img
+                class="fantasies__image fantasies__image--right-bottom"
+                src="assets/images/fantasy-right-bottom.png"
+                alt="Classic room with patterned green wallpaper"
+                width="2990"
+                height="1889"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+
+          <!-- Мобильная версия галереи использует отдельный адаптивный компонент. -->
+          <div class="mobile-gallery" role="group" aria-label="Interior gallery">
+            <picture>
+              <!-- Подключает исходный PNG без дополнительного сжатия с потерей деталей. -->
+              <img
+                class="mobile-gallery__image"
+                src="assets/images/fantasy-background.png"
+                alt="Classic interior"
+                width="1760"
+                height="1166"
+                loading="lazy"
+              />
+            </picture>
+            <!-- Нативная кнопка переключает фото и доступна с клавиатуры; JS использует её БЭМ-класс. -->
+            <button
+              class="mobile-gallery__control mobile-gallery__control--previous"
+              type="button"
+              aria-label="Previous interior photo"
+            >
+              <img
+                src="assets/icons/gallery-left.svg"
+                alt=""
+                width="66"
+                height="66"
+              />
+            </button>
+            <button
+              class="mobile-gallery__control mobile-gallery__control--next"
+              type="button"
+              aria-label="Next interior photo"
+            >
+              <img
+                src="assets/icons/gallery-right.svg"
+                alt=""
+                width="66"
+                height="66"
+              />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЭМ: блок clients — отзывы и параметры завершённых работ. -->
+      <section class="clients" id="clients" aria-labelledby="clients-title">
+        <div class="container">
+          <div class="section-heading">
+            <h2 id="clients-title">Our clients</h2>
+            <span class="section-heading__decoration" aria-hidden="true">
+              <span></span>
+              <img
+                src="assets/icons/clients.svg"
+                alt=""
+                width="34"
+                height="28"
+              />
+              <span></span>
+            </span>
+          </div>
+          <p class="clients__intro"
+            >80% of our customers recommend us to their<br />friends and
+            family.</p
+          >
+
+          <div class="clients__grid">
+            <!-- Самостоятельный материал «Fedosova Maria Konstantinovna». -->
+            <article class="review-card">
+              <!-- Шапка страницы или раздела: название и связанные элементы навигации. -->
+              <header class="review-card__header">
+                <img
+                  src="assets/images/client-maria.png"
+                  alt="Fedosova Maria Konstantinovna"
+                  width="359"
+                  height="239"
+                  loading="lazy"
+                />
+                <h3>Fedosova Maria<br />Konstantinovna</h3>
+              </header>
+              <p>
+                I want to thank the guys for their work. We put your shower part
+                in repair. I am very grateful that I referred to the repair as
+                to my own. Great thanks I express the project to Georgia for its
+                professionalism and approach.
+              </p>
+              <p>
+                The repair process was turned out in terms, faster than
+                anticipated. Team mobile and professional. Works performed
+                qualitatively without comments. Quality satisfied. Prices
+                democratic. I recommend these masters.
+              </p>
+              <div class="review-card__meta">
+                <span
+                  ><img
+                    src="assets/icons/area.svg"
+                    alt=""
+                    width="33"
+                    height="33"
+                  />40 m²</span
+                >
+                <span
+                  ><img
+                    src="assets/icons/calendar.svg"
+                    alt=""
+                    width="33"
+                    height="33"
+                  />48 days</span
+                >
+              </div>
+            </article>
+
+            <!-- Самостоятельный материал «Afanasyev Sergey Alexandrovich». -->
+            <article class="review-card">
+              <header class="review-card__header">
+                <img
+                  src="assets/images/client-sergey.png"
+                  alt="Afanasyev Sergey Alexandrovich"
+                  width="359"
+                  height="254"
+                  loading="lazy"
+                />
+                <h3>Afanasyev Sergey<br />Alexandrovich</h3>
+              </header>
+              <p>
+                I want to thank the guys for their work. We put your shower part
+                in repair. I am very grateful that I referred to the repair as
+                to my own. Great thanks I express the project to Georgia for its
+                professionalism and approach.
+              </p>
+              <p>
+                The repair process was turned out in terms, faster than
+                anticipated. Team mobile and professional. Works performed
+                qualitatively without comments. Quality satisfied. Prices
+                democratic. I recommend these masters.
+              </p>
+              <div class="review-card__meta">
+                <span
+                  ><img
+                    src="assets/icons/area.svg"
+                    alt=""
+                    width="33"
+                    height="33"
+                  />90 m²</span
+                >
+                <span
+                  ><img
+                    src="assets/icons/calendar.svg"
+                    alt=""
+                    width="33"
+                    height="33"
+                  />128 days</span
+                >
+              </div>
+            </article>
+
+            <!-- Самостоятельный материал «Kiriev Egor Leonidovich». -->
+            <article class="review-card">
+              <header class="review-card__header">
+                <img
+                  src="assets/images/client-egor.png"
+                  alt="Kiriev Egor Leonidovich"
+                  width="359"
+                  height="201"
+                  loading="lazy"
+                />
+                <h3>Kiriev Egor<br />Leonidovich</h3>
+              </header>
+              <p>
+                I want to thank the guys for their work. We put your shower part
+                in repair. I am very grateful that I referred to the repair as
+                to my own. Great thanks I express the project to Georgia for its
+                professionalism and approach.
+              </p>
+              <p>
+                The repair process was turned out in terms, faster than
+                anticipated. Team mobile and professional. Works performed
+                qualitatively without comments. Quality satisfied. Prices
+                democratic. I recommend these masters.
+              </p>
+              <div class="review-card__meta">
+                <span
+                  ><img
+                    src="assets/icons/area.svg"
+                    alt=""
+                    width="33"
+                    height="33"
+                  />56 m²</span
+                >
+                <span
+                  ><img
+                    src="assets/icons/calendar.svg"
+                    alt=""
+                    width="33"
+                    height="33"
+                  />86 days</span
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЭМ: блок contacts — вопросы, карта, адрес и социальные иконки. -->
+      <section class="contacts" id="contacts" aria-labelledby="contacts-title">
+        <picture>
+              <!-- Подключает исходный PNG без дополнительного сжатия с потерей деталей. -->
+              <img
+            class="contacts__background"
+            src="assets/images/contact-city.png"
+            alt=""
+            width="1080"
+            height="2000"
+            loading="lazy"
+          />
+        </picture>
+        <div class="contacts__shade" aria-hidden="true"></div>
+
+        <div class="contacts__inner container">
+          <!-- БЭМ: блок contact-form — расширенная форма обратной связи. -->
+          <form class="contact-form" id="contact-form" method="post" tabindex="-1">
+            <h2 id="contacts-title">Have any questions?</h2>
+            <div class="contact-form__fields">
+              <div class="field field--dark">
+                <label for="contact-name">Name</label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  placeholder="What is your name:"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="field field--dark">
+                <label for="contact-phone">Phone</label>
+                <input
+                  id="contact-phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Your phone number:"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+              <div class="field field--dark contact-form__question">
+                <label for="contact-question">Question</label>
+                <!-- Создаёт поле ввода или элемент выбора в зависимости от type. -->
+                <input
+                  id="contact-question"
+                  name="question"
+                  type="text"
+                  placeholder="I want to know:"
+                  required
+                />
+              </div>
+            </div>
+            <label
+              class="consent consent--dark contact-form__consent"
+              for="contact-consent"
+            >
+              <input
+                id="contact-consent"
+                name="consent"
+                type="checkbox"
+                required
+              />
+              <span class="consent__box" aria-hidden="true">
+                <img
+                  src="assets/icons/check.svg"
+                  alt=""
+                  width="12"
+                  height="9"
+                />
+              </span>
+              <span>I agree to the processing of personal data</span>
+            </label>
+            <button class="button button--submit contact-form__submit" type="submit">Submit</button>
+          </form>
+
+          <!-- Содержит контактные сведения автора или организации. -->
+          <address class="contacts__address">
+            Rostov-on-Don, Nansen St., 239 Shopping Center<br class="label-desktop" />
+            Decorum<br class="label-mobile" /> Tel <a href="tel:+79287683229">+7 (928) 768 32 29</a>
+          </address>
+
+          <div class="contacts__socials" aria-hidden="true">
+            <span class="social-link social-link--email">
+              <!-- Круг и конверт находятся в одном SVG, поэтому их пропорции не расходятся. -->
+              <img
+                src="assets/icons/envelope-circle.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+            </span>
+            <span class="social-link">
+              <img
+                src="assets/icons/instagram-circle.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+            </span>
+          </div>
+
+          <!-- Одна карта использует точный экспорт слоя Figma; CSS выбирает настольную или мобильную область кадра. -->
+          <picture class="contacts__map">
+
+            <img
+              src="assets/images/map-desktop.png"
+              alt="Map showing the Decorum shopping center area on Nansen Street"
+              width="1240"
+              height="910"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+      </section>
+    </main>
+
+    <!-- БЭМ: блок site-footer — повторная навигация на широких экранах. -->
+    <footer class="site-footer">
+      <div class="site-footer__inner container">
+        <a class="site-header__brand" href="#home"
+          >IC "Repair Design Project"</a
+        >
+        <!-- Навигационные ссылки для перехода между страницами или разделами. -->
+        <nav class="site-nav" aria-label="Footer navigation">
+          <a class="site-nav__link site-nav__link--active" href="#home">Home</a>
+          <a class="site-nav__link" href="#projects">Projects</a>
+          <a class="site-nav__link" href="#measurement">Measurement</a>
+          <a class="site-nav__link" href="#repair-types">Team</a>
+          <a class="site-nav__link" href="#clients">Reviews</a>
+          <a class="site-nav__link" href="#contacts">Contacts</a>
+        </nav>
+        <a class="site-header__phone" href="tel:+79287683239"
+          >+7 (928) 768-32-39</a
+        >
+        <a class="button button--small" href="#contact-form">Request a call</a>
+      </div>
+    </footer>
+  </body>
+</html>

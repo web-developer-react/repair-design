@@ -1,0 +1,444 @@
+/* Переиспользуемые компоненты интерфейса и состояния их элементов. */
+/* Переиспользуемые БЭМ-компоненты: шапка, подвал, кнопки, заголовки и поля форм. */
+/* Flexbox используется для одномерных групп, Grid — для составных компонентов. */
+@layer reset, tokens, base, layout, components, responsive, accessibility;
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer layout {
+  /* БЭМ: вложенное правило блока «site-header». */
+  .site-header,
+  .site-footer {
+    width: 100%; /* Задаёт ширину. */
+    background: var(--color-dark-deep); /* Задаёт фон. */
+    color: var(--color-white); /* Задаёт цвет текста. */
+  }
+
+  /* БЭМ: элемент «inner» блока «site-header». */
+  .site-header__inner,
+  .site-footer__inner {
+    display: flex; /* Задаёт способ отображения. */
+    min-height: 3.5625rem; /* Задаёт минимальную высоту. */
+    align-items: center; /* Выравнивает элементы поперёк. */
+    justify-content: space-between; /* Выравнивает элементы вдоль. */
+    gap: 1rem; /* Задаёт расстояние между элементами. */
+  }
+
+  /* БЭМ: элемент «inner» блока «site-header». */
+  .site-header__inner > *,
+  .site-footer__inner > * {
+    min-width: 0; /* Задаёт минимальную ширину. */
+  }
+
+  /* БЭМ: блок «site-footer» — отдельный компонент. */
+  .site-footer {
+    display: none; /* Задаёт способ отображения. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer components {
+  /* БЭМ: блок «skip-link» — отдельный компонент. */
+  .skip-link {
+    position: fixed; /* Задаёт способ позиционирования. */
+    z-index: 1000; /* Задаёт порядок слоёв. */
+    top: 0.75rem; /* Задаёт положение сверху. */
+    left: 0.75rem; /* Задаёт положение слева. */
+    padding: 0.75rem 1rem; /* Задаёт внутренний отступ. */
+    transform: translateY(-200%); /* Перемещает или масштабирует элемент. */
+    border-radius: 0.125rem; /* Скругляет углы. */
+    background: var(--color-white); /* Задаёт фон. */
+    color: var(--color-dark-deep); /* Задаёт цвет текста. */
+    font-weight: 700; /* Задаёт толщину текста. */
+    text-decoration: none; /* Оформляет текст. */
+  }
+
+  /* БЭМ: вложенное правило блока «skip-link». */
+  .skip-link:focus {
+    transform: translateY(0); /* Перемещает или масштабирует элемент. */
+  }
+
+  /* БЭМ: блок «visually-hidden» — отдельный компонент. */
+  .visually-hidden {
+    position: absolute; /* Задаёт способ позиционирования. */
+    width: 1px; /* Задаёт ширину. */
+    height: 1px; /* Задаёт высоту. */
+    padding: 0; /* Задаёт внутренний отступ. */
+    overflow: hidden; /* Управляет лишним содержимым. */
+    clip: rect(0 0 0 0); /* Скрывает лишнюю область. */
+    white-space: nowrap; /* Управляет переносом текста. */
+    border: 0; /* Задаёт границу. */
+  }
+
+  /* БЭМ: элемент «brand» блока «site-header». */
+  .site-header__brand {
+    color: var(--color-accent); /* Задаёт цвет текста. */
+    font-size: 0.6875rem; /* Задаёт размер текста. */
+    line-height: 1.2; /* Задаёт высоту строки. */
+    text-decoration: none; /* Оформляет текст. */
+    text-transform: uppercase; /* Меняет регистр текста. */
+    white-space: nowrap; /* Управляет переносом текста. */
+  }
+
+  /* БЭМ: элемент «phone» блока «site-header». */
+  .site-header__phone {
+    color: var(--color-white); /* Задаёт цвет текста. */
+    font-size: 0.6875rem; /* Задаёт размер текста. */
+    line-height: 1.2; /* Задаёт высоту строки. */
+    text-decoration: none; /* Оформляет текст. */
+    white-space: nowrap; /* Управляет переносом текста. */
+  }
+
+  /* БЭМ: вложенное правило блока «site-nav». */
+  .site-nav,
+  .site-header__request {
+    display: none; /* Задаёт способ отображения. */
+  }
+
+  .label-desktop {
+    display: none; /* Скрывает элемент и освобождает его место. */
+  }
+
+  .label-mobile {
+    display: inline; /* Размещает элемент в строке; обычные width и height не задают ему размер. */
+  }
+
+  /* БЭМ: блок «button» — отдельный компонент. */
+  .button {
+    display: inline-flex; /* Задаёт способ отображения. */
+    width: 100%; /* Задаёт ширину. */
+    min-height: 3.1875rem; /* Задаёт минимальную высоту. */
+    align-items: center; /* Выравнивает элементы поперёк. */
+    justify-content: center; /* Выравнивает элементы вдоль. */
+    padding: 0.85rem 1.4rem; /* Задаёт внутренний отступ. */
+    border: 1px solid var(--color-accent); /* Задаёт границу. */
+    border-radius: 0.125rem; /* Скругляет углы. */
+    background: var(--color-accent); /* Задаёт фон. */
+    box-shadow: var(--shadow-accent); /* Добавляет тень. */
+    color: var(--color-white); /* Задаёт цвет текста. */
+    cursor: pointer; /* Задаёт вид курсора. */
+    font-size: 0.6875rem; /* Задаёт размер текста. */
+    font-style: italic; /* Задаёт начертание текста. */
+    line-height: 1.2; /* Задаёт высоту строки. */
+    text-align: center; /* Выравнивает текст. */
+    text-decoration: none; /* Оформляет текст. */
+    text-transform: uppercase; /* Меняет регистр текста. */
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast); /* Свойства, длительность и характер плавного перехода между состояниями. */
+  }
+
+  /* БЭМ: модификатор «outline» меняет «button». */
+  .button--outline {
+    border-color: var(--color-white); /* Задаёт цвет границы. */
+    background: transparent; /* Задаёт фон. */
+    box-shadow: none; /* Добавляет тень. */
+  }
+
+  /* БЭМ: модификатор «small» меняет «button». */
+  .button--small {
+    min-height: 2.3125rem; /* Задаёт минимальную высоту. */
+    padding: 0.6rem 1.75rem; /* Задаёт внутренний отступ. */
+  }
+
+  /* Кнопки отправки в Figma используют прямое начертание 13 px; курсив остаётся у кнопок первого экрана. */
+  .button--submit {
+    padding: 0.75rem 1.4rem; /* Сохраняет высоту 51 px при увеличенном тексте. */
+    border-radius: 0; /* Прямые углы повторяют прямоугольник формы в макете. */
+    font-size: 0.8125rem; /* 13 px — размер текста Submit. */
+    font-style: normal; /* Убирает ошибочно унаследованный курсив. */
+    line-height: 1.5; /* Интервал строк соответствует кнопкам формы в Figma. */
+  }
+
+  /* БЭМ: вложенное правило блока «button». */
+  .button:hover {
+    border-color: #c99b53; /* Задаёт цвет границы. */
+    background: #c99b53; /* Задаёт фон. */
+  }
+
+  /* БЭМ: модификатор «outline» меняет «button». */
+  .button--outline:hover {
+    border-color: var(--color-white); /* Задаёт цвет границы. */
+    background: var(--color-white); /* Задаёт фон. */
+    color: var(--color-dark-deep); /* Задаёт цвет текста. */
+  }
+
+  /* БЭМ: вложенное правило блока «button». */
+  .button:active {
+    transform: translateY(1px); /* Перемещает или масштабирует элемент. */
+  }
+
+  /* На узких экранах кнопка шапки скрыта после общих стилей button. */
+  .site-header__request {
+    display: none; /* Задаёт способ отображения. */
+  }
+
+  /* БЭМ: блок «section-heading» — отдельный компонент. */
+  .section-heading {
+    display: grid; /* Задаёт способ отображения. */
+    justify-items: center; /* Выравнивает элементы внутри ячеек. */
+    gap: 0.75rem; /* Задаёт расстояние между элементами. */
+    color: var(--color-dark); /* Задаёт цвет текста. */
+    text-align: center; /* Выравнивает текст. */
+  }
+
+  /* БЭМ: элемент «decoration» блока «section-heading». */
+  .section-heading__decoration {
+    display: grid; /* Задаёт способ отображения. */
+    width: 7.125rem; /* Задаёт ширину. */
+    height: 1.8125rem; /* Задаёт высоту. */
+    grid-template-columns: 2rem max-content 2rem; /* Задаёт колонки Grid. */
+    align-items: center; /* Выравнивает элементы поперёк. */
+    justify-content: space-between; /* Выравнивает элементы вдоль. */
+  }
+
+  /* Декоративные линии повторяют прямоугольники 32 × 1,54 px из Figma. */
+  .section-heading__decoration > span {
+    width: 2rem; /* Задаёт ширину. */
+    height: 0.0965rem; /* Задаёт высоту. */
+    border-radius: 1.875rem; /* Скругляет углы. */
+    background: var(--color-accent); /* Задаёт фон. */
+  }
+
+  /* Иконка сохраняет исходные пропорции и больше не растягивается до 114 px. */
+  .section-heading__decoration img {
+    width: auto; /* Задаёт ширину. */
+    max-width: 2.125rem; /* Задаёт максимальную ширину. */
+    height: 1.75rem; /* Задаёт высоту. */
+    object-fit: contain; /* Задаёт заполнение области изображением. */
+  }
+
+  /* БЭМ: модификатор «light» меняет «section-heading». */
+  .section-heading--light {
+    color: var(--color-white); /* Задаёт цвет текста. */
+  }
+
+  /* БЭМ: блок «field» — отдельный компонент. */
+  .field {
+    position: relative; /* Задаёт способ позиционирования. */
+    display: grid; /* Задаёт способ отображения. */
+    min-width: 0; /* Задаёт минимальную ширину. */
+  }
+
+  /* БЭМ: вложенное правило блока «field». */
+  .field label {
+    color: rgb(54 54 54 / 50%); /* Задаёт цвет текста. */
+    font-size: 0.8125rem; /* Задаёт размер текста. */
+    line-height: 1.2; /* Задаёт высоту строки. */
+  }
+
+  /* БЭМ: вложенное правило блока «field». */
+  .field input {
+    width: 100%; /* Задаёт ширину. */
+    min-height: 2rem; /* Задаёт минимальную высоту. */
+    padding: 0.15rem 0 0.35rem; /* Задаёт внутренний отступ. */
+    border: 0; /* Задаёт границу. */
+    border-bottom: 1px solid rgb(54 54 54 / 30%); /* Задаёт границу снизу. */
+    border-radius: 0; /* Скругляет углы. */
+    outline: 0; /* Задаёт внешнюю рамку. */
+    background: transparent; /* Задаёт фон. */
+    color: var(--color-text); /* Задаёт цвет текста. */
+    font-size: 0.875rem; /* Задаёт размер текста. */
+  }
+
+  /* БЭМ: вложенное правило блока «field». */
+  .field input::placeholder {
+    color: currentColor; /* Задаёт цвет текста. */
+    opacity: 1; /* Задаёт прозрачность. */
+  }
+
+  /* БЭМ: модификатор «dark» меняет «field». */
+  .field--dark label {
+    color: rgb(255 255 255 / 50%); /* Задаёт цвет текста. */
+  }
+
+  /* БЭМ: модификатор «dark» меняет «field». */
+  .field--dark input {
+    border-bottom-color: rgb(255 255 255 / 15%); /* Задаёт цвет нижней границы. */
+    color: var(--color-white); /* Задаёт цвет текста. */
+  }
+
+  /* БЭМ: блок «consent» — отдельный компонент. */
+  .consent {
+    position: relative; /* Задаёт способ позиционирования. */
+    display: inline-flex; /* Задаёт способ отображения. */
+    align-items: center; /* Выравнивает элементы поперёк. */
+    gap: 0.55rem; /* Задаёт расстояние между элементами. */
+    color: var(--color-white); /* Задаёт цвет текста. */
+    cursor: pointer; /* Задаёт вид курсора. */
+    font-size: 0.875rem; /* Задаёт размер текста. */
+    line-height: 1.4; /* Задаёт высоту строки. */
+  }
+
+  /* БЭМ: вложенное правило блока «consent». */
+  .consent input {
+    position: absolute; /* Задаёт способ позиционирования. */
+    width: 1px; /* Задаёт ширину. */
+    height: 1px; /* Задаёт высоту. */
+    opacity: 0; /* Задаёт прозрачность. */
+  }
+
+  /* БЭМ: элемент «box» блока «consent». */
+  .consent__box {
+    display: grid; /* Задаёт способ отображения. */
+    width: 1.125rem; /* Задаёт ширину. */
+    height: 1.125rem; /* Задаёт высоту. */
+    flex: 0 0 1.125rem; /* Настраивает размер элемента во Flexbox. */
+    place-items: center; /* Выравнивает элементы Grid. */
+    border-radius: 0.125rem; /* Скругляет углы. */
+    background: var(--color-accent); /* Задаёт фон. */
+  }
+
+  /* БЭМ: элемент «box» блока «consent». */
+  .consent__box img {
+    display: none; /* Задаёт способ отображения. */
+    width: 0.75rem; /* Задаёт ширину. */
+    height: 0.5625rem; /* Задаёт высоту. */
+  }
+
+  /* БЭМ: вложенное правило блока «consent». */
+  .consent input:checked + .consent__box img {
+    display: block; /* Задаёт способ отображения. */
+  }
+
+  /* БЭМ: вложенное правило блока «consent». */
+  .consent input:focus-visible + .consent__box {
+    box-shadow: var(--focus-ring); /* Добавляет тень. */
+  }
+
+  /* Сообщение появляется только после заполнения формы; начальный вид Figma остаётся прежним. */
+  .form-status {
+    grid-column: 1 / -1; /* Занимает всю строку в настольной форме с несколькими колонками. */
+    margin-top: 1rem; /* Отделяет сообщение от кнопки и полей. */
+    font-size: 0.875rem; /* Сохраняет читаемый размер текста сообщения. */
+    line-height: 1.5; /* Даёт многострочному сообщению свободный интервал. */
+    text-align: center; /* Выравнивает пояснение и телефон по центру формы. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer responsive {
+  /* Адаптивные или системные правила: @media (min-width: 64rem). */
+  @media (min-width: 64rem) {
+    .label-desktop {
+      display: inline; /* Размещает элемент в строке; обычные width и height не задают ему размер. */
+    }
+
+    .label-mobile {
+      display: none; /* Скрывает элемент и освобождает его место. */
+    }
+
+    /* БЭМ: элемент «inner» блока «site-header». */
+    .site-header__inner,
+    .site-footer__inner {
+      display: grid; /* Задаёт способ отображения. */
+      width: min(calc(100% - (var(--page-padding) * 2)), 78.5rem); /* Отдельный контейнер 1256 px повторяет края шапки и подвала Figma. */
+      grid-template-columns: max-content minmax(0, 1fr) max-content max-content; /* Задаёт колонки Grid. */
+      min-height: 5.1875rem; /* Задаёт минимальную высоту. */
+      column-gap: clamp(1.25rem, 2vw, 2rem); /* Задаёт расстояние между колонками. */
+    }
+
+    /* БЭМ: блок «site-nav» — отдельный компонент. */
+    .site-nav {
+      display: flex; /* Задаёт способ отображения. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      align-items: center; /* Выравнивает элементы поперёк. */
+      justify-content: center; /* Выравнивает элементы вдоль. */
+      gap: clamp(0.75rem, 1.6vw, 1.75rem); /* Задаёт расстояние между элементами. */
+    }
+
+    /* БЭМ: элемент «link» блока «site-nav». */
+    .site-nav__link {
+      color: var(--color-white); /* Задаёт цвет текста. */
+      font-size: 0.6875rem; /* Задаёт размер текста. */
+      text-decoration: none; /* Оформляет текст. */
+      text-transform: uppercase; /* Меняет регистр текста. */
+      transition: color var(--transition-fast); /* Задаёт плавное изменение. */
+      white-space: nowrap; /* Управляет переносом текста. */
+    }
+
+    /* БЭМ: элемент «link» блока «site-nav». */
+    .site-nav__link:hover,
+    .site-nav__link--active {
+      color: var(--color-accent); /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: элемент «phone» блока «site-header». */
+    .site-header__phone {
+      color: var(--color-accent); /* Задаёт цвет текста. */
+      text-decoration: underline; /* Оформляет текст. */
+    }
+
+    /* БЭМ: элемент «request» блока «site-header». */
+    .site-header__request {
+      display: inline-flex; /* Задаёт способ отображения. */
+      width: 10.0625rem; /* Задаёт ширину. */
+    }
+
+    /* БЭМ: блок «button» — отдельный компонент. */
+    .button {
+      width: auto; /* Задаёт ширину. */
+      min-width: 12.5rem; /* Задаёт минимальную ширину. */
+    }
+
+    /* Маленькая кнопка имеет собственную ширину; общий минимум 200 px для форм к ней не относится. */
+    .button--small {
+      width: 10.0625rem; /* 161 px — ширина Request a call в макете. */
+      min-width: 10.0625rem; /* Отменяет минимум основной кнопки в этом же слое каскада. */
+    }
+
+    /* БЭМ: блок «site-footer» — отдельный компонент. */
+    .site-footer {
+      display: block; /* Задаёт способ отображения. */
+    }
+
+    /* БЭМ: элемент «inner» блока «site-footer». */
+    .site-footer__inner {
+      min-height: 8.3125rem; /* Задаёт минимальную высоту. */
+    }
+
+    /* БЭМ: вложенное правило блока «site-footer». */
+    .site-footer .button {
+      min-width: 10.0625rem; /* Задаёт минимальную ширину. */
+    }
+  }
+
+  /* Широкий экран повторяет отдельные текстовые колонки меню Figma; фиксированные колонки остаются внутри ограниченного контейнера. */
+  @media (min-width: 80rem) {
+    .site-header__inner,
+    .site-footer__inner {
+      grid-template-columns: 17.2rem minmax(0, 1fr) 10.625rem 10.0625rem; /* Меню начинается на x≈367, телефон на x≈1017, кнопка на x≈1187 при ширине 1440 px. */
+      column-gap: 0; /* Промежутки уже включены в ширину колонок. */
+    }
+
+    .site-nav {
+      display: grid; /* Сохраняет одинаковые начала подписей, даже когда длина слова меньше текстового слоя. */
+      grid-template-columns: 2.5rem 3.625rem 5.875rem 2.125rem 3.3125rem 4.1875rem; /* Повторяет ширины шести текстовых слоёв навигации. */
+      justify-content: start; /* Прижимает начало меню к его колонке. */
+      gap: 2.942875rem; /* 47,086 px — промежуток между соседними слоями Figma. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 64rem) and (max-width: 79.99rem). */
+  @media (min-width: 64rem) and (max-width: 79.99rem) {
+    /* БЭМ: элемент «inner» блока «site-header». */
+    .site-header__inner,
+    .site-footer__inner {
+      grid-template-columns: max-content minmax(0, 1fr) max-content; /* Задаёт колонки Grid. */
+    }
+
+    /* БЭМ: элемент «request» блока «site-header». */
+    .site-header__request,
+    .site-footer .button {
+      display: none; /* Задаёт способ отображения. */
+    }
+
+    /* БЭМ: вложенное правило блока «site-nav». */
+    .site-nav,
+    .site-footer .site-nav {
+      gap: 0.75rem; /* Задаёт расстояние между элементами. */
+    }
+
+    /* БЭМ: элемент «link» блока «site-nav». */
+    .site-nav__link {
+      font-size: 0.625rem; /* Задаёт размер текста. */
+    }
+  }
+}

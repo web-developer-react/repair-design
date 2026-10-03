@@ -1,0 +1,349 @@
+/* Оформление раздела проектов и связанных элементов. */
+/* Стили секции выполненных проектов и её элементов управления. */
+/* Медиазапросы находятся рядом с компонентами, которые они изменяют. */
+@layer components, responsive, accessibility;
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer components {
+  /* БЭМ: блок «projects» — отдельный компонент. */
+  .projects {
+    position: relative; /* Задаёт способ позиционирования. */
+    padding: 2.25rem 0 3.6875rem; /* Учитывает более свободные строки характеристик, сохраняя начало Online control. */
+    background: var(--color-dark); /* Мобильная секция имеет фон #181818 из Figma. */
+    color: var(--color-white); /* Задаёт цвет текста. */
+  }
+
+  /* БЭМ: элемент «inner» блока «projects». */
+  .projects__inner {
+    display: grid; /* Задаёт способ отображения. */
+    grid-template-columns: minmax(0, 1fr); /* Задаёт колонки Grid. */
+    grid-template-rows: repeat(4, auto); /* Задаёт строки Grid. */
+  }
+
+  /* БЭМ: элемент «copy» блока «projects». */
+  .projects__copy {
+    display: contents; /* Задаёт способ отображения. */
+  }
+
+  /* БЭМ: элемент «title» блока «projects». */
+  .projects__title {
+    width: min(100%, 10rem); /* Задаёт ширину. */
+    grid-row: 1; /* Задаёт положение в строках Grid. */
+    grid-column: 1; /* Задаёт положение в колонках Grid. */
+    max-width: 10rem; /* Задаёт максимальную ширину. */
+    justify-self: center; /* Выравнивает отдельный элемент. */
+    color: var(--color-accent); /* Задаёт цвет текста. */
+    font-size: 1.375rem; /* Задаёт размер текста. */
+    letter-spacing: -0.07em; /* Задаёт расстояние между буквами. */
+    line-height: 1.386; /* Задаёт высоту строки. */
+    text-align: center; /* Выравнивает текст. */
+    text-transform: uppercase; /* Меняет регистр текста. */
+  }
+
+  /* БЭМ: элемент «intro» блока «projects». */
+  .projects__intro {
+    width: min(100%, 19.5rem); /* Задаёт ширину. */
+    grid-row: 2; /* Задаёт положение в строках Grid. */
+    grid-column: 1; /* Задаёт положение в колонках Grid. */
+    max-width: 19.5rem; /* Задаёт максимальную ширину. */
+    justify-self: center; /* Выравнивает отдельный элемент. */
+    margin-top: 1.69375rem; /* Внешний отступ сверху. */
+    font-size: 0.6875rem; /* Задаёт размер текста. */
+    line-height: 1.58; /* Задаёт высоту строки. */
+    text-align: center; /* Выравнивает текст. */
+  }
+
+  /* БЭМ: элемент «visual» блока «projects». */
+  .projects__visual {
+    display: grid; /* Задаёт способ отображения. */
+    grid-row: 3; /* Задаёт положение в строках Grid. */
+    grid-column: 1; /* Задаёт положение в колонках Grid. */
+    min-width: 0; /* Задаёт минимальную ширину. */
+    margin-top: 4.4rem; /* Внешний отступ сверху. */
+  }
+
+  /* БЭМ: блок «project-tabs» — отдельный компонент. */
+  .project-tabs {
+    display: none; /* Задаёт способ отображения. */
+  }
+
+  /* БЭМ: элемент «visual» блока «projects». */
+  .projects__visual picture {
+    overflow: hidden; /* Управляет лишним содержимым. */
+  }
+
+  /* БЭМ: элемент «image» блока «projects». */
+  .projects__image {
+    width: 100%; /* Задаёт ширину. */
+    aspect-ratio: 340 / 242; /* Сохраняет пропорции элемента. */
+    object-fit: cover; /* Задаёт заполнение области изображением. */
+    object-position: center; /* Задаёт положение изображения. */
+  }
+
+  /* БЭМ: блок «project-facts» — отдельный компонент. */
+  .project-facts {
+    display: grid; /* Задаёт способ отображения. */
+    grid-row: 4; /* Задаёт положение в строках Grid. */
+    grid-column: 1; /* Задаёт положение в колонках Grid. */
+    grid-template-columns: minmax(0, 8.75rem) minmax(0, 1fr); /* На мобильном экране вторая колонка начинается на 178 px. */
+    gap: 1.75rem 1.25rem; /* Даёт строкам характеристик отступы мобильного макета. */
+    margin-top: 2.25rem; /* Задаёт внешний отступ сверху. */
+  }
+
+  /* БЭМ: элемент «item» блока «project-facts». */
+  .project-facts__item {
+    min-width: 0; /* Задаёт минимальную ширину. */
+  }
+
+  /* БЭМ: элемент «item» блока «project-facts». */
+  .project-facts__item dt {
+    margin-bottom: 0.725rem; /* Отделяет название характеристики от значения на 11,6 px. */
+    color: var(--color-accent); /* Задаёт цвет текста. */
+    font-family: var(--font-display); /* Задаёт семейство шрифта. */
+    font-size: 0.875rem; /* Задаёт размер текста. */
+    line-height: 1.386; /* Задаёт высоту строки. */
+    text-transform: uppercase; /* Меняет регистр текста. */
+  }
+
+  /* БЭМ: элемент «item» блока «project-facts». */
+  .project-facts__item dd {
+    font-size: 0.6875rem; /* Задаёт размер текста. */
+    line-height: 1.6368; /* Сохраняет свободные строки значения города из Figma. */
+  }
+
+  /* БЭМ: блок «project-controls» — отдельный компонент. */
+  .project-controls {
+    z-index: 2; /* Задаёт порядок слоёв. */
+    display: flex; /* Задаёт способ отображения. */
+    grid-row: 3; /* Задаёт положение в строках Grid. */
+    grid-column: 1; /* Задаёт положение в колонках Grid. */
+    width: calc(100% - 1.75rem); /* Ставит стрелки на расстоянии 14 px от края фотографии. */
+    align-self: center; /* Выравнивает стрелки внутри строки с фотографией. */
+    margin-top: 4.4rem; /* Компенсирует верхний отступ фотографии; стрелки остаются в середине самого изображения. */
+    align-items: center; /* Выравнивает элементы поперёк. */
+    justify-self: center; /* Выравнивает отдельный элемент. */
+    justify-content: space-between; /* Выравнивает элементы вдоль. */
+    pointer-events: none; /* Управляет реакцией на указатель. */
+  }
+
+  /* БЭМ: блок «icon-button» — отдельный компонент. */
+  .icon-button {
+    display: inline-grid; /* Задаёт способ отображения. */
+    width: 2.25rem; /* Задаёт ширину. */
+    height: 2.25rem; /* Задаёт высоту. */
+    place-items: center; /* Выравнивает элементы Grid. */
+  }
+
+  /* БЭМ: вложенное правило блока «icon-button». */
+  .icon-button img {
+    width: 2.25rem; /* Задаёт ширину. */
+    height: 2.25rem; /* Задаёт высоту. */
+    object-fit: contain; /* Задаёт заполнение области изображением. */
+  }
+
+  /* БЭМ: вложенное правило блока «icon-button». */
+  .icon-button picture {
+    width: 100%; /* Задаёт ширину. */
+    height: 100%; /* Задаёт высоту. */
+  }
+
+  /* БЭМ: элемент «dots» блока «project-controls». */
+  .project-controls__dots {
+    display: none; /* Задаёт способ отображения. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer responsive {
+  /* В мобильном SVG сама стрелка направлена вправо; Figma разворачивает левый экземпляр отдельным преобразованием. */
+  @media (max-width: 63.99rem) {
+    .icon-button--previous img {
+      transform: rotate(180deg); /* Показывает стрелку назад без перерисовки исходного SVG. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 48rem). */
+  @media (min-width: 48rem) {
+    /* БЭМ: элемент «title» блока «projects». */
+    .projects__title,
+    .projects__intro {
+      width: min(100%, 31rem); /* Задаёт ширину. */
+      max-width: 31rem; /* Задаёт максимальную ширину. */
+    }
+
+    /* БЭМ: элемент «visual» блока «projects». */
+    .projects__visual,
+    .project-facts {
+      width: min(100%, 42.5rem); /* Задаёт ширину. */
+      justify-self: center; /* Выравнивает отдельный элемент. */
+    }
+
+    /* БЭМ: блок «project-controls» — отдельный компонент. */
+    .project-controls {
+      width: min(calc(100% - 5rem), 38rem); /* Задаёт ширину. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 64rem). */
+  @media (min-width: 64rem) {
+    /* БЭМ: блок «projects» — отдельный компонент. */
+    .projects {
+      padding: 6.65rem 0 5.63125rem; /* Учитывает реальную высоту стрелок и сохраняет начало Online control на y≈1540. */
+      background: var(--color-dark-deep); /* Настольная секция сохраняет свой более тёмный фон #131313. */
+    }
+
+    /* БЭМ: элемент «inner» блока «projects». */
+    .projects__inner {
+      width: min(calc(100% - (var(--page-padding) * 2)), 73.125rem); /* Ширина элемента. */
+      grid-template-columns: minmax(0, 27.625rem) minmax(0, 42.4375rem); /* Задаёт колонки Grid. */
+      grid-template-rows: auto; /* Задаёт строки Grid. */
+      align-items: start; /* Выравнивает элементы поперёк. */
+      justify-content: space-between; /* Выравнивает элементы вдоль. */
+      gap: 3.0625rem; /* Промежутки между элементами Flexbox или Grid. */
+    }
+
+    /* БЭМ: элемент «copy» блока «projects». */
+    .projects__copy {
+      display: block; /* Задаёт способ отображения. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      padding-top: 4.35rem; /* Задаёт внутренний отступ сверху. */
+    }
+
+    /* БЭМ: элемент «title» блока «projects». */
+    .projects__title {
+      width: 15.8125rem; /* Задаёт ширину. */
+      max-width: 15.8125rem; /* Задаёт максимальную ширину. */
+      justify-self: auto; /* Выравнивает отдельный элемент. */
+      font-size: 1.6875rem; /* Задаёт размер текста. */
+      line-height: 1.386; /* Строки заголовка разделены на 37,42 px, как в Figma. */
+      transform: translateY(-0.125rem); /* Компенсирует верхнее поле строки при отрисовке заголовочного шрифта браузером. */
+      text-align: left; /* Выравнивает текст. */
+    }
+
+    /* БЭМ: элемент «intro» блока «projects». */
+    .projects__intro {
+      width: 100%; /* Задаёт ширину. */
+      max-width: 27.625rem; /* Задаёт максимальную ширину. */
+      justify-self: auto; /* Выравнивает отдельный элемент. */
+      margin-top: 1.45rem; /* Описание остаётся в исходном месте после увеличения интервала заголовка. */
+      font-size: 0.875rem; /* Задаёт размер текста. */
+      line-height: 1.9096; /* 26,73 px — подтверждённый межстрочный интервал описания в Figma. */
+      text-align: left; /* Выравнивает текст. */
+    }
+
+    /* БЭМ: элемент «visual» блока «projects». */
+    .projects__visual {
+      grid-row: 1; /* Выравнивает изображение с началом текстовой колонки. */
+      grid-column: 2; /* Задаёт положение в колонках Grid. */
+      width: auto; /* Задаёт ширину. */
+      margin-top: 0; /* Задаёт внешний отступ сверху. */
+    }
+
+    /* БЭМ: блок «project-tabs» — отдельный компонент. */
+    .project-tabs {
+      display: flex; /* Задаёт способ отображения. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      min-height: 4.35rem; /* Задаёт минимальную высоту. */
+      align-items: flex-start; /* Выравнивает элементы поперёк. */
+      gap: clamp(1rem, 3vw, 3.8rem); /* Задаёт расстояние между элементами. */
+    }
+
+    /* БЭМ: элемент «item» блока «project-tabs». */
+    .project-tabs__item {
+      min-width: 0; /* Задаёт минимальную ширину. */
+      padding-bottom: 0.35rem; /* Задаёт внутренний отступ снизу. */
+      color: rgb(255 255 255 / 30%); /* Задаёт цвет текста. */
+      font-family: var(--font-display); /* Задаёт семейство шрифта. */
+      font-size: 0.875rem; /* Задаёт размер текста. */
+      line-height: 1.2; /* Задаёт высоту строки. */
+      text-transform: uppercase; /* Меняет регистр текста. */
+    }
+
+    /* БЭМ: элемент «item» блока «project-tabs». */
+    .project-tabs__item--active {
+      border-bottom: 1px solid var(--color-accent); /* Задаёт границу снизу. */
+      color: var(--color-accent); /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: элемент «image» блока «projects». */
+    .projects__image {
+      aspect-ratio: 679 / 482; /* Сохраняет пропорции элемента. */
+    }
+
+    /* БЭМ: блок «project-facts» — отдельный компонент. */
+    .project-facts {
+      width: 100%; /* Задаёт ширину. */
+      justify-self: stretch; /* Индивидуальное выравнивание внутри ячейки Grid вдоль строки. */
+      grid-template-columns: 10.375rem minmax(0, 1fr); /* Вторая колонка начинается через 190 px, как в макете. */
+      gap: 2.09375rem 1.5rem; /* Сохраняет шаг около 107 px между строками характеристик. */
+      margin-top: 3.125rem; /* Первая характеристика начинается около y=1194 в кадре HOME. */
+    }
+
+    /* БЭМ: элемент «item» блока «project-facts». */
+    .project-facts__item dt {
+      font-size: 1.125rem; /* Задаёт размер текста. */
+      margin-bottom: 0.375rem; /* Название и значение разделяет 6 px при более крупном заголовке. */
+    }
+
+    /* БЭМ: элемент «item» блока «project-facts». */
+    .project-facts__item dd {
+      font-size: 0.8125rem; /* Задаёт размер текста. */
+      line-height: 1.6368; /* 21,28 px — подтверждённый интервал значений в настольном макете. */
+    }
+
+    /* БЭМ: блок «project-controls» — отдельный компонент. */
+    .project-controls {
+      position: static; /* Задаёт способ позиционирования. */
+      width: 12.85625rem; /* 205,7 px — общая ширина стрелок и точек в Figma. */
+      justify-self: start; /* Индивидуальное выравнивание внутри ячейки Grid вдоль строки. */
+      margin-top: 5.1625rem; /* Стрелки совпадают с нижней границей фотографии около y=1436. */
+      transform: none; /* Оставляет управление в обычном потоке и не скрывает ошибки отступов. */
+      pointer-events: none; /* Управляет реакцией на указатель. */
+    }
+
+    /* БЭМ: блок «icon-button» — отдельный компонент. */
+    .icon-button {
+      width: auto; /* Задаёт ширину. */
+      height: 0.875rem; /* Задаёт высоту. */
+    }
+
+    /* БЭМ: вложенное правило блока «icon-button». */
+    .icon-button img,
+    .icon-button picture {
+      width: 2.625rem; /* Задаёт ширину. */
+      height: 0.875rem; /* Задаёт высоту. */
+    }
+
+    /* БЭМ: элемент «dots» блока «project-controls». */
+    .project-controls__dots {
+      display: block; /* Показывает предоставленный SVG только в настольном варианте. */
+      width: 4rem; /* 64 px — исходная ширина трёх точек. */
+      height: 0.625rem; /* 10 px — исходная высота SVG без растягивания. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 64rem) and (max-width: 79.99rem). */
+  @media (min-width: 64rem) and (max-width: 79.99rem) {
+    /* БЭМ: блок «project-tabs» — отдельный компонент. */
+    .project-tabs {
+      flex-wrap: wrap; /* Разрешает перенос элементов Flexbox. */
+      gap: 0.8rem 1rem; /* Задаёт расстояние между элементами. */
+    }
+
+    /* БЭМ: элемент «item» блока «project-tabs». */
+    .project-tabs__item {
+      font-size: 0.75rem; /* Задаёт размер текста. */
+    }
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer accessibility {
+  /* Адаптивные или системные правила: @media (prefers-contrast: more). */
+  @media (prefers-contrast: more) {
+    /* БЭМ: элемент «intro» блока «projects». */
+    .projects__intro {
+      color: currentColor; /* Задаёт цвет текста. */
+    }
+  }
+}

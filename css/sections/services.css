@@ -1,0 +1,597 @@
+/* Оформление разделов услуг и связанных карточек. */
+/* Стили онлайн-контроля, типов ремонта и бесплатного замера. */
+/* Медиазапросы находятся рядом с компонентами, которые они изменяют. */
+@layer components, responsive, accessibility;
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer components {
+  /* БЭМ: блок «online» — отдельный компонент. */
+  .online {
+    padding: 0 0 2.8rem; /* Задаёт внутренний отступ. */
+    background: var(--color-dark); /* Мобильный блок имеет фон #181818, как в Figma. */
+    color: var(--color-white); /* Задаёт цвет текста. */
+  }
+
+  /* На тёмном мобильном фоне подписи и введённый текст должны оставаться видимыми. */
+  .online .field label {
+    color: rgb(255 255 255 / 50%); /* Повторяет приглушённую подпись формы в макете. */
+  }
+
+  .online .field input {
+    color: var(--color-white); /* Показывает текст и подсказку белым на тёмном фоне. */
+    border-bottom-color: rgb(255 255 255 / 70%); /* Светлая линия отделяет поле от фона. */
+  }
+
+  .online .section-heading h2,
+  .repair-types .section-heading h2 {
+    font-size: 1.375rem; /* На мобильном экране оба заголовка имеют размер 22 px. */
+    line-height: 1.2; /* Высота одной строки совпадает с заголовками мобильного макета. */
+  }
+
+  .online .section-heading {
+    gap: 1.15rem; /* Группа камеры находится ниже надписи на 18,4 px. */
+  }
+
+  .repair-types .section-heading {
+    gap: 0.975rem; /* Высота всей группы Types of repair составляет 71 px. */
+  }
+
+  /* БЭМ: элемент «inner» блока «online». */
+  .online__inner {
+    display: grid; /* Задаёт способ отображения. */
+    justify-items: stretch; /* Выравнивает элементы внутри ячеек. */
+  }
+
+  /* БЭМ: элемент «video» блока «online». */
+  .online__video {
+    position: relative; /* Задаёт способ позиционирования. */
+    min-width: 0; /* Задаёт минимальную ширину. */
+    margin-top: 2.5125rem; /* Сохраняет начало постера около y=1374 после уточнения заголовка. */
+    overflow: hidden; /* Управляет лишним содержимым. */
+    box-shadow: 0 1.25rem 2.5rem rgb(0 0 0 / 18%); /* Добавляет тень. */
+  }
+
+  /* БЭМ: элемент «video» блока «online». */
+  .online__video > picture,
+  .online__video > picture > img {
+    width: 100%; /* Задаёт ширину. */
+    aspect-ratio: 340 / 207; /* Сохраняет пропорции элемента. */
+  }
+
+  /* БЭМ: элемент «video» блока «online». */
+  .online__video > picture > img {
+    object-fit: cover; /* Задаёт заполнение области изображением. */
+  }
+
+  /* БЭМ: элемент «video-shade» блока «online». */
+  .online__video-shade {
+    position: absolute; /* Задаёт способ позиционирования. */
+    inset: 0; /* Задаёт положение по сторонам. */
+    background: rgb(0 0 0 / 80%); /* Задаёт фон. */
+  }
+
+  /* БЭМ: элемент «play» блока «online». */
+  .online__play {
+    position: absolute; /* Задаёт способ позиционирования. */
+    top: calc(50% + 0.3125rem); /* Компенсирует 5 px прозрачного поля SVG, чтобы видимый круг оказался в центре постера. */
+    left: 50%; /* Задаёт положение слева. */
+    display: grid; /* Задаёт способ отображения. */
+    width: 6.0625rem; /* Задаёт ширину. */
+    height: 6.0625rem; /* Задаёт высоту. */
+    transform: translate(-50%, -50%); /* Перемещает или масштабирует элемент. */
+    place-items: center; /* Выравнивает элементы Grid. */
+    border-radius: 50%; /* Скругляет углы. */
+  }
+
+  /* БЭМ: вложенное изображение элемента online__play. */
+  .online__play picture,
+  .online__play img {
+    width: 100%; /* Задаёт ширину. */
+    height: 100%; /* Задаёт высоту. */
+  }
+
+  /* БЭМ: элемент «divider» блока «online». */
+  .online__divider {
+    width: 3.4375rem; /* Задаёт ширину. */
+    height: 0.125rem; /* Задаёт высоту. */
+    justify-self: center; /* Выравнивает отдельный элемент. */
+    margin-top: 1.8rem; /* Задаёт внешний отступ сверху. */
+    border-radius: 3rem; /* Скругляет углы. */
+    background: var(--color-accent); /* Задаёт фон. */
+  }
+
+  /* БЭМ: элемент «description» блока «online». */
+  .online__description {
+    max-width: 42.5rem; /* Задаёт максимальную ширину. */
+    justify-self: center; /* Выравнивает отдельный элемент. */
+    margin-top: 1.25rem; /* Задаёт внешний отступ сверху. */
+    font-size: 0.6875rem; /* Задаёт размер текста. */
+    line-height: 1.7; /* Задаёт высоту строки. */
+    text-align: center; /* Выравнивает текст. */
+  }
+
+  /* БЭМ: блок «lead-form» — отдельный компонент. */
+  .lead-form {
+    display: grid; /* Задаёт способ отображения. */
+    min-width: 0; /* Задаёт минимальную ширину. */
+    gap: 0; /* Промежутки между элементами Flexbox или Grid. */
+    margin-top: 4.7rem; /* Внешний отступ сверху. */
+  }
+
+  .lead-form .field + .field {
+    margin-top: 3.775rem; /* Внешний отступ сверху. */
+  }
+
+  /* БЭМ: элемент «consent» блока «lead-form». */
+  .lead-form__consent {
+    order: 3; /* Визуальный порядок элемента во Flexbox или Grid; порядок HTML не меняется. */
+    margin-top: 1.55rem; /* Внешний отступ сверху. */
+  }
+
+  .lead-form__submit {
+    order: 4; /* Визуальный порядок элемента во Flexbox или Grid; порядок HTML не меняется. */
+    margin-top: 3.8rem; /* Внешний отступ сверху. */
+  }
+
+  /* БЭМ: блок «repair-types» — отдельный компонент. */
+  .repair-types {
+    margin-top: -4.375rem; /* Внешний отступ сверху. */
+    padding: 5.125rem 0 3.4rem; /* Внутренние отступы между содержимым и границей. */
+    background: var(--color-white); /* Задаёт фон. */
+  }
+
+  /* БЭМ: блок «repair-grid» — отдельный компонент. */
+  .repair-grid {
+    display: grid; /* Задаёт способ отображения. */
+    grid-template-columns: minmax(0, 1fr); /* Задаёт колонки Grid. */
+    gap: 3.7rem; /* Задаёт расстояние между элементами. */
+    margin-top: 2.55rem; /* Первая мобильная карточка начинается около y=2280 после заголовка высотой 71 px. */
+  }
+
+  /* БЭМ: блок «repair-card» — отдельный компонент. */
+  .repair-card {
+    position: relative; /* Задаёт способ позиционирования. */
+    min-width: 0; /* Задаёт минимальную ширину. */
+    min-height: 30.25rem; /* Нижняя граница высоты. */
+    padding-bottom: 0; /* Внутренний отступ снизу. */
+  }
+
+  /* Обрезает изображения карточек по границам кадра из Figma. */
+  .repair-card picture {
+    display: block; /* Задаёт способ отображения. */
+    overflow: hidden; /* Управляет лишним содержимым. */
+  }
+
+  /* БЭМ: элемент «image» блока «repair-card». */
+  .repair-card__image {
+    width: 100%; /* Задаёт ширину. */
+    aspect-ratio: 340 / 365; /* Сохраняет пропорции элемента. */
+    object-fit: cover; /* Задаёт заполнение области изображением. */
+  }
+
+  /* БЭМ: элемент «body» блока «repair-card». */
+  .repair-card__body {
+    position: relative; /* Задаёт способ позиционирования. */
+    z-index: 1; /* Задаёт порядок слоёв. */
+    width: min(79.4%, 20.625rem); /* Задаёт ширину. */
+    height: 15.0625rem; /* Высота элемента. */
+    min-height: 15.0625rem; /* Нижняя граница высоты. */
+    margin-top: -8.9rem; /* Задаёт внешний отступ сверху. */
+    padding: 1.3rem 1.9rem 2.75rem; /* Задаёт внутренний отступ. */
+    background: var(--color-white); /* Задаёт фон. */
+    box-shadow: 0.3125rem 0.625rem 1.25rem rgb(0 0 0 / 5%); /* Добавляет тень. */
+  }
+
+  /* БЭМ: элемент «body» блока «repair-card». */
+  .repair-card__body h3 {
+    margin-bottom: 0.45rem; /* Задаёт внешний отступ снизу. */
+    color: var(--color-text); /* Задаёт цвет текста. */
+    font-size: 0.9375rem; /* Задаёт размер текста. */
+    line-height: 1.386; /* Задаёт высоту строки. */
+  }
+
+  /* БЭМ: элемент «body» блока «repair-card». */
+  .repair-card__body ul {
+    color: var(--color-muted); /* Задаёт цвет текста. */
+    font-size: 0.8125rem; /* Задаёт размер текста. */
+    line-height: 1.7; /* Задаёт высоту строки. */
+    list-style: none; /* Задаёт оформление списка. */
+  }
+
+  /* БЭМ: элемент «body» блока «repair-card». */
+  .repair-card__body li::before {
+    content: "• "; /* Добавляет декоративное содержимое. */
+  }
+
+  /* БЭМ: элемент «price» блока «repair-card». */
+  .repair-card__price {
+    position: relative; /* Задаёт способ позиционирования. */
+    z-index: 2; /* Задаёт порядок слоёв. */
+    display: flex; /* Задаёт способ отображения. */
+    width: min(56%, 14.25rem); /* Задаёт ширину. */
+    min-width: 11.9rem; /* Задаёт минимальную ширину. */
+    min-height: 2.5rem; /* Задаёт минимальную высоту. */
+    align-items: center; /* Выравнивает элементы поперёк. */
+    justify-content: center; /* Выравнивает элементы вдоль. */
+    margin-top: -1.25rem; /* Задаёт внешний отступ сверху. */
+    padding: 0.6rem 0.8rem; /* Задаёт внутренний отступ. */
+    background: var(--color-accent); /* Задаёт фон. */
+    box-shadow: 0.3125rem 0.3125rem 0.625rem rgb(227 184 115 / 30%); /* Добавляет тень. */
+    color: var(--color-white); /* Задаёт цвет текста. */
+    font-family: var(--font-display); /* Задаёт семейство шрифта. */
+    font-size: 0.9375rem; /* Задаёт размер текста. */
+    line-height: 1.2; /* Задаёт высоту строки. */
+    text-align: center; /* Выравнивает текст. */
+    text-transform: uppercase; /* Меняет регистр текста. */
+  }
+
+  /* БЭМ: блок «measurement» — отдельный компонент. */
+  .measurement {
+    display: none; /* Задаёт способ отображения. */
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer responsive {
+  /* Адаптивные или системные правила: @media (min-width: 48rem). */
+  @media (min-width: 48rem) {
+    /* Ограничивает ширину видеоблока и формы на планшетах. */
+    .lead-form,
+    .online__video,
+    .online__description {
+      width: min(100%, 42.5rem); /* Задаёт ширину. */
+      justify-self: center; /* Выравнивает отдельный элемент. */
+    }
+
+    /* БЭМ: блок «repair-grid» — отдельный компонент. */
+    .repair-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* Задаёт колонки Grid. */
+    }
+
+    /* БЭМ: вложенное правило блока «repair-card». */
+    .repair-card:last-child {
+      grid-column: 1 / -1; /* Задаёт положение в колонках Grid. */
+      width: calc(50% - 1.85rem); /* Задаёт ширину. */
+      justify-self: center; /* Выравнивает отдельный элемент. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 64rem). */
+  @media (min-width: 64rem) {
+    /* БЭМ: блок «online» — отдельный компонент. */
+    .online {
+      padding: 0 0 9.1575rem; /* Задаёт внутренний отступ. */
+      background: linear-gradient(to bottom, var(--color-dark-deep) 0 20rem, var(--color-white) 20rem 100%); /* Задаёт фон. */
+      color: var(--color-text); /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: вложенное правило блока «online». */
+    .online .section-heading {
+      color: var(--color-white); /* Задаёт цвет текста. */
+      gap: 0.75rem; /* Возвращает настольный интервал группы иконки. */
+    }
+
+    .repair-types .section-heading {
+      gap: 0.75rem; /* Настольный заголовок использует общий промежуток 12 px. */
+    }
+
+    /* В настольной версии форма стоит на белом фоне и возвращается к тёмному тексту. */
+    .online .field label {
+      color: rgb(54 54 54 / 50%); /* Подписи на светлом фоне повторяют Figma. */
+    }
+
+    .online .field input {
+      color: var(--color-text); /* Тёмный текст остаётся читаемым на белом фоне. */
+      border-bottom-color: rgb(54 54 54 / 30%); /* Возвращает тонкую серую линию поля. */
+    }
+
+    .online .section-heading h2,
+    .repair-types .section-heading h2 {
+      font-size: 1.25rem; /* Настольные заголовки этих секций имеют размер 20 px. */
+      line-height: 1.2; /* Сохраняет исходный настольный интервал. */
+    }
+
+    /* БЭМ: элемент «video» блока «online». */
+    .online__video {
+      width: min(100%, 51.0625rem); /* Задаёт ширину. */
+      margin-top: 2.075rem; /* Внешний отступ сверху. */
+    }
+
+    /* БЭМ: элемент «video» блока «online». */
+    .online__video > picture,
+    .online__video > picture > img {
+      aspect-ratio: 817 / 434; /* Сохраняет пропорции элемента. */
+    }
+
+    /* БЭМ: элемент «play» блока «online». */
+    .online__play {
+      width: 9.0625rem; /* Задаёт ширину. */
+      height: 9.0625rem; /* Задаёт высоту. */
+    }
+
+    /* БЭМ: элемент «divider» блока «online». */
+    .online__divider {
+      margin-top: 3.9rem; /* Внешний отступ сверху. */
+    }
+
+    /* БЭМ: элемент «description» блока «online». */
+    .online__description {
+      width: min(100%, 42.5rem); /* Задаёт ширину. */
+      margin-top: 2.125rem; /* Задаёт внешний отступ сверху. */
+      font-size: 1.125rem; /* Задаёт размер текста. */
+      line-height: 1.818; /* Задаёт высоту строки. */
+    }
+
+    /* БЭМ: модификатор «inline» меняет «lead-form». */
+    .lead-form--inline {
+      width: min(100%, 48.0625rem); /* Задаёт ширину. */
+      grid-template-columns: minmax(0, 14.4375rem) minmax(0, 14.4375rem) minmax(12.5rem, 1fr); /* Задаёт колонки Grid. */
+      align-items: start; /* Выравнивает элементы поперёк. */
+      gap: 0 clamp(1.5rem, 4vw, 3.6rem); /* Задаёт расстояние между элементами. */
+      margin-top: 5.72rem; /* Внешний отступ сверху. */
+    }
+
+    .lead-form .field + .field {
+      margin-top: 0; /* Внешний отступ сверху. */
+    }
+
+    /* БЭМ: элемент «submit» блока «lead-form». */
+    .lead-form__submit {
+      align-self: start; /* Выравнивает отдельный элемент поперёк. */
+      grid-column: 3; /* На настольном экране ставит кнопку справа от двух полей без изменения порядка Tab. */
+      grid-row: 1; /* Возвращает кнопку в первую строку сетки после перестановки HTML. */
+      order: initial; /* Возвращает начальное значение свойства по CSS. */
+      margin-top: 0; /* Внешний отступ сверху. */
+    }
+
+    /* БЭМ: элемент «consent» блока «lead-form». */
+    .lead-form__consent {
+      grid-column: 1 / -1; /* Задаёт положение в колонках Grid. */
+      grid-row: 2; /* Согласие остаётся под полями в настольном макете. */
+      justify-self: center; /* Выравнивает отдельный элемент. */
+      margin-top: 2.0625rem; /* Задаёт внешний отступ сверху. */
+      color: var(--color-text); /* Задаёт цвет текста. */
+      order: initial; /* Возвращает начальное значение свойства по CSS. */
+    }
+
+    /* БЭМ: блок «repair-types» — отдельный компонент. */
+    .repair-types {
+      margin-top: 0; /* Внешний отступ сверху. */
+      padding: 0 0 7.75rem; /* После карточек остаётся 124 px до начала фонового здания из Figma. */
+    }
+
+    /* БЭМ: блок «repair-grid» — отдельный компонент. */
+    .repair-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)); /* Задаёт колонки Grid. */
+      gap: 1.875rem; /* Задаёт расстояние между элементами. */
+      margin-top: 2.0625rem; /* Задаёт внешний отступ сверху. */
+    }
+
+    /* БЭМ: вложенное правило блока «repair-card». */
+    .repair-card:last-child {
+      grid-column: auto; /* Задаёт положение в колонках Grid. */
+      width: auto; /* Задаёт ширину. */
+      justify-self: stretch; /* Индивидуальное выравнивание внутри ячейки Grid вдоль строки. */
+    }
+
+    .repair-card {
+      min-height: 0; /* Разрешает высоту от нуля, отменяя прежний минимум. */
+    }
+
+    /* БЭМ: элемент «image» блока «repair-card». */
+    .repair-card__image {
+      aspect-ratio: 392 / 421; /* Сохраняет пропорции элемента. */
+    }
+
+    /* БЭМ: элемент «body» блока «repair-card». */
+    .repair-card__body {
+      width: calc(100% - 3.875rem); /* Задаёт ширину. */
+      height: auto; /* Позволяет браузеру рассчитать высоту по содержимому и другим ограничениям. */
+      min-height: 17.875rem; /* Задаёт минимальную высоту. */
+      margin: -7.9375rem auto 0; /* Белая панель начинается через 294 px после верха фотографии. */
+      padding: 1.45rem 2.1rem 2.7rem; /* Сохраняет панель высотой 286 px с более свободным списком услуг. */
+    }
+
+    /* БЭМ: элемент «body» блока «repair-card». */
+    .repair-card__body h3 {
+      font-size: 1.125rem; /* Задаёт размер текста. */
+    }
+
+    /* БЭМ: элемент «body» блока «repair-card». */
+    .repair-card__body ul {
+      font-size: 0.8125rem; /* Задаёт размер текста. */
+      line-height: 2.046; /* 26,6 px — расстояние между пунктами настольного списка в Figma. */
+    }
+
+    /* БЭМ: элемент «price» блока «repair-card». */
+    .repair-card__price {
+      width: 14.25rem; /* Задаёт ширину. */
+      min-height: 3.375rem; /* Задаёт минимальную высоту. */
+      margin-top: -1.625rem; /* Цена перекрывает нижний край панели на 26 px, как в макете. */
+      margin-left: 1.95rem; /* Задаёт внешний отступ слева. */
+      font-size: 1.125rem; /* Задаёт размер текста. */
+    }
+
+    /* БЭМ: блок «measurement» — отдельный компонент. */
+    .measurement {
+      position: relative; /* Задаёт способ позиционирования. */
+      display: block; /* Задаёт способ отображения. */
+      padding: 6.625rem 0 13.246875rem; /* Форма стоит на 106 px ниже начала здания; нижний отступ сохраняет положение галереи. */
+      overflow: hidden; /* Управляет лишним содержимым. */
+      background: var(--color-white); /* Задаёт фон. */
+    }
+
+    /* БЭМ: вложенное правило блока «measurement». */
+    .measurement::before {
+      position: absolute; /* Задаёт способ позиционирования. */
+      z-index: 0; /* Задаёт порядок слоёв. */
+      top: 0; /* Верх здания совпадает с началом раздела замера. */
+      left: calc(50% - 63.9375rem); /* На ширине 1440 px левый край слоя находится на −303 px, как в Figma. */
+      width: 62.875rem; /* Исходный слой здания имеет ширину 1006 px. */
+      height: 40.3125rem; /* Сохраняет высоту исходного слоя 645 px. */
+      background: url("../../assets/images/measurement-background.png") center / cover no-repeat; /* Задаёт фон. */
+      content: ""; /* Добавляет декоративное содержимое. */
+      opacity: 0.2; /* Повторяет прозрачность изображения в Figma. */
+      filter: grayscale(1); /* Убирает цвет из декоративного чертежа здания. */
+      transform: scaleX(-1); /* Перемещает или масштабирует элемент. */
+    }
+
+    /* БЭМ: элемент «inner» блока «measurement». */
+    .measurement__inner {
+      position: relative; /* Задаёт способ позиционирования. */
+      width: min(calc(100% - (var(--page-padding) * 2)), 77.5rem); /* Собственный контейнер замера шириной 1240 px ставит форму на x=834. */
+      z-index: 1; /* Задаёт порядок слоёв. */
+      display: grid; /* Задаёт способ отображения. */
+      grid-template-columns: minmax(0, 1fr) minmax(28rem, 31.625rem); /* Задаёт колонки Grid. */
+      gap: clamp(2rem, 4vw, 3rem); /* Задаёт расстояние между элементами. */
+    }
+
+    /* БЭМ: элемент «steps» блока «measurement». */
+    .measurement__steps {
+      display: grid; /* Задаёт способ отображения. */
+      align-content: start; /* Выравнивает содержимое поперёк. */
+      gap: 5.375rem; /* Центры соседних шагов находятся на расстоянии 144 px. */
+      padding: 0.2rem 0 0 8.8125rem; /* С учётом белой рамки золотой круг начинается на x=249 и y≈3590. */
+      list-style: none; /* Задаёт оформление списка. */
+    }
+
+    /* БЭМ: элемент «steps» блока «measurement». */
+    .measurement__steps li {
+      display: flex; /* Задаёт способ отображения. */
+      max-width: 25rem; /* Задаёт максимальную ширину. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      align-items: center; /* Выравнивает элементы поперёк. */
+      gap: 0.55rem; /* Подпись начинается примерно на x=308 после круга и его белой рамки. */
+    }
+
+    /* БЭМ: элемент «steps» блока «measurement». */
+    .measurement__steps span {
+      display: grid; /* Задаёт способ отображения. */
+      width: 3.625rem; /* Внешний круг занимает 58 px вместе с белой рамкой. */
+      height: 3.625rem; /* Золотая часть остаётся диаметром 42 px. */
+      flex: 0 0 3.625rem; /* Не позволяет длинной подписи сжать круг. */
+      place-items: center; /* Выравнивает элементы Grid. */
+      border: 0.5rem solid var(--color-white); /* Задаёт границу. */
+      border-radius: 50%; /* Скругляет углы. */
+      background: var(--color-accent); /* Задаёт фон. */
+      box-shadow: 0 0.3125rem 0.9375rem rgb(227 184 115 / 15%); /* Добавляет тень. */
+      color: var(--color-white); /* Задаёт цвет текста. */
+      font-family: var(--font-display); /* Задаёт семейство шрифта. */
+      font-size: 1.125rem; /* Задаёт размер текста. */
+    }
+
+    /* БЭМ: элемент «steps» блока «measurement». */
+    .measurement__steps p {
+      min-width: 0; /* Задаёт минимальную ширину. */
+      font-size: 0.875rem; /* Задаёт размер текста. */
+      max-width: 19.75rem; /* Первая подпись занимает те же 316 px, что её текстовый слой в Figma. */
+      line-height: 1.392857; /* Две строки занимают около 39 px и выравниваются по центру круга. */
+    }
+
+    /* Последняя подпись имеет более узкий текстовый слой и поэтому сохраняет две строки макета. */
+    .measurement__steps li:last-child p {
+      max-width: 12.375rem; /* 198 px — ширина текста последнего шага. */
+    }
+
+    /* БЭМ: вложенное правило блока «dark-form». */
+    .dark-form {
+      background: var(--color-dark-deep); /* Задаёт фон. */
+      color: var(--color-white); /* Задаёт цвет текста. */
+    }
+
+    /* БЭМ: блок «dark-form» — отдельный компонент. */
+    .dark-form {
+      display: grid; /* Задаёт способ отображения. */
+      min-width: 0; /* Задаёт минимальную ширину. */
+      min-height: 31.8125rem; /* Задаёт минимальную высоту. */
+      align-content: start; /* Не растягивает строки и кнопку до свободного места формы. */
+      padding: 1.75rem 3.05rem 1.7rem; /* Задаёт внутренний отступ. */
+      box-shadow: 0 1.875rem 1.875rem rgb(0 0 0 / 5%); /* Добавляет тень. */
+    }
+
+    /* БЭМ: вложенное правило блока «dark-form». */
+    .dark-form h3 {
+      margin-bottom: 2.153125rem; /* Первое поле начинается на y≈3693 после двух строк заголовка. */
+      font-family: var(--font-body); /* Задаёт семейство шрифта. */
+      font-size: 1.125rem; /* Задаёт размер текста. */
+      line-height: 1.4322; /* Повторяет интервал строк заголовка формы из Figma. */
+      text-align: center; /* Выравнивает текст. */
+    }
+
+    /* БЭМ: вложенное правило блока «dark-form». */
+    .dark-form .field {
+      margin-bottom: 3.11875rem; /* Поля Name, Phone и Email идут с шагом около 98 px. */
+    }
+
+    /* После Email следует согласие, поэтому большой промежуток для следующего поля здесь не нужен. */
+    .dark-form .field:last-of-type {
+      margin-bottom: 0; /* Отделяет поле почты от согласия только собственным отступом согласия. */
+    }
+
+    /* БЭМ: вложенное правило блока «dark-form». */
+    .dark-form .consent {
+      margin: 1rem 0 2.41875rem; /* Располагает согласие около y=3953, а кнопку около y=4010. */
+    }
+
+    /* БЭМ: элемент «submit» блока «dark-form». */
+    .dark-form__submit {
+      justify-self: end; /* Выравнивает отдельный элемент. */
+      width: 13.3125rem; /* Call the measurer имеет ширину 213 px и высоту общей кнопки 51 px. */
+    }
+
+    /* БЭМ: элемент «saving» блока «measurement». */
+    .measurement__saving {
+      display: flex; /* Задаёт способ отображения. */
+      width: min(100%, 30.0625rem); /* Учитывает прозрачные поля SVG вокруг видимого круга 72 px. */
+      align-items: center; /* Выравнивает элементы поперёк. */
+      gap: 0.3125rem; /* Текст стоит на 25 px правее видимого золотого круга. */
+      margin: 1.7775rem auto 0; /* Видимый круг появляется на y≈4126 после формы. */
+      color: var(--color-accent); /* Задаёт цвет текста. */
+      font-size: 1.125rem; /* Задаёт размер текста. */
+      line-height: 1.305556; /* Две строки подписи занимают 47 px. */
+    }
+
+    .measurement__saving p {
+      transform: translateY(-0.625rem); /* Выравнивает текст по видимому кругу, центр которого выше центра SVG на 10 px. */
+    }
+
+    /* БЭМ: элемент «saving» блока «measurement». */
+    .measurement__saving img {
+      width: 7rem; /* Задаёт ширину. */
+      height: 7rem; /* Задаёт высоту. */
+      flex: 0 0 7rem; /* Настраивает размер элемента во Flexbox. */
+    }
+  }
+
+  /* Адаптивные или системные правила: @media (min-width: 64rem) and (max-width: 79.99rem). */
+  @media (min-width: 64rem) and (max-width: 79.99rem) {
+    /* БЭМ: элемент «inner» блока «measurement». */
+    .measurement__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 28rem); /* Задаёт колонки Grid. */
+      gap: 2rem; /* Задаёт расстояние между элементами. */
+    }
+
+    /* БЭМ: элемент «steps» блока «measurement». */
+    .measurement__steps {
+      padding-left: 0; /* Задаёт внутренний отступ слева. */
+    }
+  }
+}
+
+/* Объединяет правила в именованный слой каскада CSS. */
+@layer accessibility {
+  /* Адаптивные или системные правила: @media (forced-colors: active). */
+  @media (forced-colors: active) {
+    /* БЭМ: элемент «price» блока «repair-card». */
+    .repair-card__price,
+    .measurement__steps span {
+      border: 1px solid ButtonText; /* Задаёт границу. */
+      forced-color-adjust: auto; /* Настраивает системные контрастные цвета. */
+    }
+
+    /* Убирает затемнение видео в системном контрастном режиме. */
+    .online__video-shade {
+      display: none; /* Задаёт способ отображения. */
+    }
+  }
+}
